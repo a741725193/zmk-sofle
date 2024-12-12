@@ -1,2 +1,0 @@
-config SHIELD_NICE_VIEW_ADAPTER
-    def_bool $(shields_list_contains,nice_view_adapter)

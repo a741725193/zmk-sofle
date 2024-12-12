@@ -1,10 +1,13 @@
+---
 include:
-
-  - board: nice_nano_v2
+  - board: eyelash_sofle_left
+    shield: nice_view
+  - board: eyelash_sofle_right
+    shield: nice_view_custom
+  - board: eyelash_sofle_left
+    shield: nice_view
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: eyelash_sofle_studio_left
+  - board: eyelash_sofle_left
     shield: settings_reset
-  - board: sofle_left
-    shield: nice_view_adapter nice_view
-    artifact-name: sofle_left_nice_view
-  - board: sofle_right
-    shield: nice_view_adapter nice_view_custom
-    artifact-name: sofle_right_nice_view
