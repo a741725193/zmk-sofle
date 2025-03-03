@@ -55,11 +55,11 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp KP_PLUS      &kp KP_MINUS     &kp KP_MULTIPLY   &kp KP_DIVIDE     &kp KP_DOT   &kp SCROLLLOCK
-&trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp KP_N7        &kp KP_N8        &kp KP_N9         &kp KP_N0         &trans       &kp END
-&trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp KP_N4        &kp KP_N5        &kp KP_N6         &kp ENTER         &trans       &trans
-&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &kp KP_N1        &kp KP_N2        &kp KP_N3         &kp KP_DOT        &kp BSLH     &kp PAGE_DOWN
-&trans      &trans           &trans          &trans           &kp DOWN         &kp UP             &mkp RCLK        &kp LEFT         &kp RIGHT        &trans            &trans            &kp PAGE_DOWN
+&kp GRAVE   &kp N1           &kp N2          &kp N3           &kp N4           &kp N5         &mmv MOVE_UP     &kp KP_PLUS      &kp KP_MINUS     &kp KP_DOT        &kp LEFT_BRACKET  &kp RIGHT_BRACKET   &kp SCROLLLOCK
+&trans      &trans           &trans          &trans           &trans           &trans         &mmv MOVE_DOWN   &kp KP_N7        &kp KP_N8        &kp KP_N9         &kp KP_N0         &trans              &kp END
+&trans      &kp TILDE        &trans          &trans           &trans           &trans         &mmv MOVE_LEFT   &kp KP_N4        &kp KP_N5        &kp KP_N6         &kp KP_DIVIDE     &trans              &trans
+&trans      &trans           &trans          &trans           &trans           &trans         &mmv MOVE_RIGHT  &kp KP_N1        &kp KP_N2        &kp KP_N3         &kp KP_MULTIPLY   &kp BSLH            &kp PAGE_DOWN
+&trans      &trans           &trans          &trans           &kp DOWN         &kp UP         &mkp RCLK        &kp LEFT         &kp RIGHT        &trans            &trans            &kp PAGE_DOWN
             >;
 
             display-name = "LAYER 1";
@@ -68,9 +68,9 @@
 
         layer_2 {
             bindings = <
-&kp GRAVE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &kp PRINTSCREEN
-&trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
-&trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
+&kp GRAVE  &kp F1        &kp F2          &kp F3        &kp F4        &kp F5          &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &kp PRINTSCREEN
+&trans     &bt BT_CLR    &mmv MOVE_UP    &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
+&trans     &out OUT_USB  &mmv MOVE_DOWN  &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
 &trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
 &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
             >;
