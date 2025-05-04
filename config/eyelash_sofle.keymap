@@ -19,7 +19,7 @@
 &kp GRAVE   &kp Q      &kp W         &kp E         &kp R      &kp T     &trans       &kp Y          &kp U         &kp I      &kp O            &kp P       &kp BACKSPACE      
 &kp TAB     &kp A      &kp S         &kp D         &kp F      &kp G     &trans       &kp H          &kp J         &kp K      &kp L            &kp SEMI    &kp APOS      
 &kp LCTRL   &kp Z      &kp X         &kp C         &kp V      &kp B     &trans       &kp N          &kp M         &kp COMMA  &kp DOT          &kp FSLH    &kp ENTER     
-            &LSHIFT    &kp LALT      &LGUI         &kp SPACE  &mo 1     &mo 2       &kp SPACE      &kp RSHIFT    &kp RGUI   &kp LEFT         &kp RIGHT
+            &LSHIFT    &kp LALT      &LGUI         &kp SPACE  &mo 1     &mo 2       &kp SPACE      &kp RSHIFT    &kp RGUI   &kp LEFT          &kp RIGHT   &trans
             >;
 
             display-name = "base";
@@ -31,7 +31,7 @@
 &kp GRAVE   &kp F1           &kp F2             &kp F3              &kp F4              &kp F12         &kp F5              &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &none    
 &none      &kp GRAVE         &none              &none               &none               &kp F12         &none               &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL 
 &none      &rgb_ug RGB_OFF   &rgb_ug RGB_ON     &rgb_ug RGB_EFF     &rgb_ug RGB_EFR     &kp F12         &rgb_ug RGB_SPI     &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &none  
-            &none            &none              &kp C_MUTE          &none               &none           &none               &none            &none            &none       &none          
+            &none            &none              &kp C_MUTE          &none               &none           &none               &none            &none            &none       &none      &trans
             >;
 
             display-name = "upper";
@@ -39,11 +39,11 @@
 
         layer_2 {
             bindings = <
-&kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4   &kp F12    &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &none       
-&none     &bt BT_CLR    &bt BT_CLR_ALL  &none        &none          &none         &kp F12    &none  &none  &kp F11     &kp F12    &kp UNDER    &kp PLUS    
-&none     &out OUT_USB  &out OUT_BLE    &none        &none          &none         &kp F12    &none  &none  &none      &none     &kp LBRC     &kp RBRC    
-&none     &sys_reset    &none          &bootloader   &none          &none         &kp F12    &none  &none  &sys_reset  &soft_off  &bootloader  &none     
-           &none        &none          &none        &none          &none         &none     &none  &none  &none      &none          
+&kp TILDE   &bt BT_SEL 0    &bt BT_SEL 1     &bt BT_SEL 2   &bt BT_SEL 3    &bt BT_SEL 4    &kp F12     &kp F6      &kp F7      &kp F8      &kp F9       &kp F10        &none       
+&none       &bt BT_CLR      &bt BT_CLR_ALL   &none          &none          &none            &kp F12     &none       &none       &kp F11     &kp F12      &kp UNDER      &kp PLUS    
+&none       &out OUT_USB    &out OUT_BLE     &none          &none          &none            &kp F12     &none       &none       &none       &none        &kp LBRC       &kp RBRC    
+&none       &sys_reset      &none            &bootloader    &none          &none            &kp F12     &none       &none       &sys_reset  &soft_off    &bootloader    &none     
+            &none           &none            &none          &none          &none            &none       &none       &none       &none       &none        &trans         &trans
             >;
 
             display-name = "BLUTTH";
@@ -56,7 +56,7 @@
 &none  &none  &none  &none  &none  &none  &kp F12   &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &kp F12   &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &kp F12   &none  &none  &none  &none  &none  &none
-        &none  &none  &none  &none  &none  &kp F12   &none  &none  &none  &none  &none                   
+       &none  &none  &none  &none  &none  &kp F12   &none  &none  &none  &none  &none &trans
 
             >;
 
