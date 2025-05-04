@@ -11,8 +11,8 @@ manifest:
   projects:
     - name: eyelash_sofle
       url: https://github.com/a741725193/zmk-sofle
-      revision: refactor
-    - name: mario-peripheral-animation
+      revision: main
+    - name: urchin-peripheral-animation
       remote: gpeye
       revision: main 
     - name: zmk
