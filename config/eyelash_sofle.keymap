@@ -26,7 +26,7 @@
 &kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE
             >;
 
-            display-name = "base;
+            display-name = "base";
         };
 
         layer_1 {
