@@ -41,26 +41,26 @@
         compatible = "zmk,keymap";
 
         layer0 { bindings = <
-&kp ESC        &kp N1        &kp N2          &kp N3          &kp N4         &kp N5          &kp LC(UP_ARROW)      &kp N6           &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
-&kp TAB        &kp Q         &kp W           &kp E           &kp R          &kp T           &kp LC(DOWN_ARROW)    &kp Y            &kp U          &kp I          &kp O            &kp P          &kp BSLH
+&kp GRAVE      &kp N1        &kp N2          &kp N3          &kp N4     &kp N5 &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kp N6       &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
+&kp TAB        &kp Q         &kp W           &kp E           &kp R         &kp T &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS &kp Y           &kp U          &kp I          &kp O            &kp P          &kp BSLH
 &kp CAPS       &kp A         &kp S           &kp D           &kp F          &kp G           &kp LC(LEFT_ARROW)    &kp H            &kp J          &kp K          &kp L            &kp SEMI       &kp APOS
 &kp LSHFT      &kp Z         &kp X           &kp C           &kp V          &kp B           &kp LC(RIGHT_ARROW)   &kp N            &kp M          &kp COMMA      &kp DOT          &kp FSLH       &kp RIGHT_SHIFT
-&kp C_MUTE     &kp LCTRL     &kp LEFT_ALT    &kp LEFT_GUI    &kp SPACE      &mo 1           &kp LG(SPACE)         &kp SPACE        &kp ENTER      &kp RIGHT_SHIFT&mo 2            &kp DELETE
-            >; sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>; display-name = "LAYER0"; };
+&kp MCLK       &kp LCTRL     &kp LEFT_ALT    &kp LEFT_GUI    &kp SPACE      &mo 1           &kp C_AC_SEARCH       &kp SPACE        &kp ENTER      &kp MINUS      &mo 2            &kp EQUAL
+            >; sensor-bindings = <&inc_dec_kp SCRL_UP SCRL_DOWN>; display-name = "Layer_0"; };
         layer_1 { bindings = <
-&kp GRAVE      &kp F1        &kp F2          &kp F3          &kp F4         &kp F5          &mmv MOVE_UP      &kp F6           &kp F7         &kp F8         &kp F9           &kp F10        &kp DELETE
+&kp ESC        &kp F1        &kp F2          &kp F3          &kp F4         &kp F5          &mmv MOVE_UP      &kp F6           &kp F7         &kp F8         &kp F9           &kp F10        &kp DELETE
 &trans         &kp GRAVE     &mkp LCLK       &mkp MCLK       &mkp RCLK      &mkp MB4        &mmv MOVE_DOWN    &kp PG_UP        &kp HOME       &kp UP         &kp END          &kp MINUS      &kp EQUAL
 &trans         &kp TILDE     &trans          &trans          &trans         &mkp MB5        &mmv MOVE_LEFT    &kp PG_DN        &kp LEFT       &kp DOWN       &kp RIGHT        &kp LBKT       &kp RBKT
 &trans        &rgb_ug RGB_OFF&rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_EFR&rgb_ug RGB_SPI &mmv MOVE_RIGHT   &rgb_ug RGB_BRI  &rgb_ug RGB_BRD&kp INSERT     &kp F11          &kp F12        &trans
 &kp C_MUTE     &trans        &trans          &trans          &trans         &trans          &mkp LCLK         &trans           &trans         &trans         &trans           &trans
-            >; display-name = "layer1"; sensor-bindings = <&scroll_encoder>; };
+            >; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; display-name = "Layer_1";};
         layer_2 { bindings = <
-&kp TILDE      &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4    &mmv MOVE_UP      &kp F6           &kp F7         &kp F8         &kp F9           &kp F10        &trans
-&studio_unlock &bt BT_CLR    &bt BT_CLR_ALL  &trans          &trans         &trans          &mmv MOVE_DOWN    &trans           &trans         &kp F11        &kp F12          &kp UNDER      &kp PLUS
-&trans         &out OUT_USB  &out OUT_BLE    &trans          &trans         &trans          &mmv MOVE_LEFT    &trans           &trans         &trans         &trans           &kp LBRC       &kp RBRC
-&trans         &sys_reset    &trans          &bootloader     &trans         &trans          &mmv MOVE_RIGHT   &trans           &trans         &sys_reset     &soft_off        &bootloader    &trans
-&trans         &trans        &trans          &trans          &trans         &trans          &mkp LCLK         &trans           &trans         &trans         &trans           &trans
-            >; display-name = "layer2"; sensor-bindings = <&scroll_encoder>; };
+&trans         &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4    &kp C_VOL_UP      &kp F6           &kp F7         &kp F8         &kp F9           &kp F10        &trans
+&studio_unlock &bt BT_CLR    &bt BT_CLR_ALL  &trans          &trans         &trans          &kp C_VOL_DN      &trans           &trans         &kp F11        &kp F12          &kp UNDER      &kp PLUS
+&trans         &out OUT_USB  &out OUT_BLE    &trans          &trans         &trans          &kp C_PREV        &trans           &trans         &trans         &trans           &kp LBRC       &kp RBRC
+&trans         &sys_reset    &trans          &bootloader     &trans         &trans          &kp C_NEXT        &trans           &trans         &sys_reset     &soft_off        &bootloader    &trans
+&kp C_POWER    &trans        &trans          &trans          &trans         &trans          &kp C_PP          &trans           &trans         &trans         &trans           &trans
+            >; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>; display-name = "Layer_2"; };
 
         layer_3 {
             bindings = <
