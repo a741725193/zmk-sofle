@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1600  // 600
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
 
 #include <input/processors.dtsi>
@@ -21,7 +21,7 @@
 };
 
 &mmv {
-    time-to-max-speed-ms = <500>;
+    time-to-max-speed-ms = <200>;
     acceleration-exponent = <1>;
     trigger-period-ms = <16>;
 };
@@ -31,7 +31,14 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-        tap-ms = <60>;
+        tap-ms = <80>;
+    };
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        combo_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
     };
     keymap {
         compatible = "zmk,keymap";
@@ -56,15 +63,13 @@
 &trans         &sys_reset    &trans          &bootloader     &trans         &trans          &kp C_NEXT        &trans           &trans         &sys_reset     &soft_off        &bootloader    &trans
 &kp K_POWER    &trans        &trans          &trans          &trans         &trans          &kp C_PP          &trans           &trans         &trans         &trans           &trans
             >; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>; display-name = "Layer_2"; };
-
-        layer_3 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+        layer_3 { bindings = <
+&trans         &trans        &trans          &trans      &ext_power EP_ON &ext_power EP_OFF &trans            &trans           &trans         &trans         &trans         &ext_power EP_ON &ext_power EP_OFF
+&rgb_ug RGB_TOG&trans        &trans          &trans          &trans         &trans          &trans            &rgb_ug RGB_TOG  &trans         &trans         &trans           &trans         &trans
+&trans         &trans        &trans          &trans          &trans         &trans          &trans            &trans           &trans         &trans         &trans           &trans         &trans
+&trans         &trans        &trans          &trans          &trans         &trans          &trans            &trans           &trans         &trans         &trans           &trans         &trans
+&trans         &trans        &trans          &trans          &trans         &trans          &trans            &trans           &trans         &trans         &trans           &trans
+            >; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; display-name = "Layer_3";
         };
     };
 };
