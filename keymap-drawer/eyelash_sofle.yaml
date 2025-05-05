@@ -7,7 +7,7 @@ layers:
   - {t: '3', s: '#'}
   - {t: '4', s: $}
   - {t: '5', s: '%'}
-  - AC DESKTOP SHOW ALL APPLICATIONS
+  - Ctl+$$mdi:arrow-down-bold$$
   - {t: '6', s: ^}
   - {t: '7', s: '&'}
   - {t: '8', s: '*'}
@@ -20,7 +20,7 @@ layers:
   - E
   - R
   - T
-  - AC DESKTOP SHOW ALL WINDOWS
+  - Ctl+$$mdi:arrow-up-bold$$
   - Y
   - U
   - I
@@ -53,13 +53,13 @@ layers:
   - {t: ., s: '>'}
   - {t: /, s: '?'}
   - $$mdi:apple-keyboard-shift$$
-  - MCLK
+  - $$mdi:mouse-scroll-wheel$$
   - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-option$$
   - $$mdi:apple-keyboard-command$$
   - $$mdi:keyboard-space$$
   - Layer_1
-  - AC SEARCH
+  - AC DESKTOP SHOW ALL APPLICATIONS
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '-', s: _}
@@ -183,7 +183,7 @@ layers:
   - '&soft_off'
   - $$mdi:progress-download$$
   - {t: '$$mdi:transfer$$', type: trans}
-  - $$mdi:power-standby$$
+  - POWER
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
