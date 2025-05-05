@@ -307,8 +307,8 @@ rect.held, rect.combo.held {
   visibility: hidden;
 }
 </style>
-<g transform="translate(40, 0)" class="layer-Layer_0">
-<text x="0" y="28" class="label" id="Layer_0">Layer_0:</text>
+<g transform="translate(40, 0)" class="layer-LAYER0">
+<text x="0" y="28" class="label" id="LAYER0">LAYER0:</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 56)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
