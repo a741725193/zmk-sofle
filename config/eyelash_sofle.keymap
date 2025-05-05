@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1600  // 600
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
 
 #include <input/processors.dtsi>
@@ -41,12 +41,12 @@
         compatible = "zmk,keymap";
 
         layer0 { bindings = <
-&kp GRAVE      &kp N1        &kp N2          &kp N3          &kp N4     &kp N5 &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kp N6       &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
-&kp TAB        &kp Q         &kp W           &kp E           &kp R         &kp T &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS &kp Y           &kp U          &kp I          &kp O            &kp P          &kp BSLH
-&kp CAPS       &kp A         &kp S           &kp D           &kp F          &kp G           &kp LC(LEFT_ARROW)    &kp H            &kp J          &kp K          &kp L            &kp SEMI       &kp APOS
-&kp LSHFT      &kp Z         &kp X           &kp C           &kp V          &kp B           &kp LC(RIGHT_ARROW)   &kp N            &kp M          &kp COMMA      &kp DOT          &kp FSLH       &kp RIGHT_SHIFT
-&kp MCLK       &kp LCTRL     &kp LEFT_ALT    &kp LEFT_GUI    &kp SPACE      &mo 1           &kp C_AC_SEARCH       &kp SPACE        &kp ENTER      &kp MINUS      &mo 2            &kp EQUAL
-            >; sensor-bindings = <&inc_dec_kp SCRL_UP SCRL_DOWN>; display-name = "Layer_0"; };
+&kp GRAVE      &kp N1        &kp N2          &kp N3          &kp N4         &kp N5          &kp LC(DOWN)    &kp N6           &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
+&kp TAB        &kp Q         &kp W           &kp E           &kp R          &kp T           &kp LC(UP)      &kp Y            &kp U          &kp I          &kp O            &kp P          &kp BSLH
+&kp CAPS       &kp A         &kp S           &kp D           &kp F          &kp G           &kp LC(LEFT)    &kp H            &kp J          &kp K          &kp L            &kp SEMI       &kp APOS
+&kp LSHFT      &kp Z         &kp X           &kp C           &kp V          &kp B           &kp LC(RIGHT)   &kp N            &kp M          &kp COMMA      &kp DOT          &kp FSLH       &kp RIGHT_SHIFT
+&mkp MCLK      &kp LCTRL     &kp LEFT_ALT    &kp LEFT_GUI    &kp SPACE   &mo 1 &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kp SPACE    &kp ENTER      &kp MINUS      &mo 2            &kp EQUAL
+            >; sensor-bindings = <&scroll_encoder>; display-name = "Layer_0"; };
         layer_1 { bindings = <
 &kp ESC        &kp F1        &kp F2          &kp F3          &kp F4         &kp F5          &mmv MOVE_UP      &kp F6           &kp F7         &kp F8         &kp F9           &kp F10        &kp DELETE
 &trans         &kp GRAVE     &mkp LCLK       &mkp MCLK       &mkp RCLK      &mkp MB4        &mmv MOVE_DOWN    &kp PG_UP        &kp HOME       &kp UP         &kp END          &kp MINUS      &kp EQUAL
@@ -59,7 +59,7 @@
 &studio_unlock &bt BT_CLR    &bt BT_CLR_ALL  &trans          &trans         &trans          &kp C_VOL_DN      &trans           &trans         &kp F11        &kp F12          &kp UNDER      &kp PLUS
 &trans         &out OUT_USB  &out OUT_BLE    &trans          &trans         &trans          &kp C_PREV        &trans           &trans         &trans         &trans           &kp LBRC       &kp RBRC
 &trans         &sys_reset    &trans          &bootloader     &trans         &trans          &kp C_NEXT        &trans           &trans         &sys_reset     &soft_off        &bootloader    &trans
-&kp C_POWER    &trans        &trans          &trans          &trans         &trans          &kp C_PP          &trans           &trans         &trans         &trans           &trans
+&kp K_POWER    &trans        &trans          &trans          &trans         &trans          &kp C_PP          &trans           &trans         &trans         &trans           &trans
             >; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>; display-name = "Layer_2"; };
 
         layer_3 {
