@@ -1,5 +1,6 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
+#define ZMK_MOUSE_SCRL_VAL 140
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
@@ -34,17 +35,17 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-        tap-ms = <100>;
+        tap-ms = <20>;
     };
 
     keymap {
         compatible = "zmk,keymap";
 
         layer0 { bindings = <
-&kp GRAVE      &kp N1        &kp N2          &kp N3          &kp N4         &kp N5          &kp LC(DOWN)    &kp N6           &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
-&kp TAB        &kp Q         &kp W           &kp E           &kp R          &kp T           &kp LC(UP)      &kp Y            &kp U          &kp I          &kp O            &kp P          &kp BSLH
-&kp CAPS       &kp A         &kp S           &kp D           &kp F          &kp G           &kp LC(LEFT)    &kp H            &kp J          &kp K          &kp L            &kp SEMI       &kp APOS
-&kp LSHFT      &kp Z         &kp X           &kp C           &kp V          &kp B           &kp LC(RIGHT)   &kp N            &kp M          &kp COMMA      &kp DOT          &kp FSLH       &kp RIGHT_SHIFT
+&kp GRAVE      &kp N1        &kp N2          &kp N3          &kp N4         &kp N5          &kp LC(UP)        &kp N6           &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
+&kp TAB        &kp Q         &kp W           &kp E           &kp R          &kp T           &kp LC(DOWN)      &kp Y            &kp U          &kp I          &kp O            &kp P          &kp BSLH
+&kp CAPS       &kp A         &kp S           &kp D           &kp F          &kp G           &kp LC(LEFT)      &kp H            &kp J          &kp K          &kp L            &kp SEMI       &kp APOS
+&kp LSHFT      &kp Z         &kp X           &kp C           &kp V          &kp B           &kp LC(RIGHT)     &kp N            &kp M          &kp COMMA      &kp DOT          &kp FSLH       &kp RIGHT_SHIFT
 &mkp MCLK      &kp LCTRL     &kp LEFT_ALT    &kp LEFT_GUI    &kp SPACE   &mo 1 &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kp SPACE    &kp ENTER      &kp MINUS      &mo 2            &kp EQUAL
             >; sensor-bindings = <&scroll_encoder>; display-name = "Layer_0"; };
         layer_1 { bindings = <
