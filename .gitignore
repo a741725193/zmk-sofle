@@ -1,5 +1,8 @@
+.DS_Store
+
 build/
 zmk/
 modules/
 tools/
 .west/
+firmwares/
