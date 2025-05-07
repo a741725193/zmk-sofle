@@ -30,7 +30,7 @@
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
         tap-ms = <80>;
     };
     conditional_layers {
@@ -51,36 +51,36 @@
     keymap {
         compatible = "zmk,keymap";
         layer0 { bindings = <
-&kp GRAVE      &kp N1        &kp N2          &kp N3          &kp N4         &kp N5          &kp LC(UP)        &kp N6           &kp N7         &kp N8         &kp N9           &kp N0         &kp BACKSPACE
-&kp TAB        &kp Q         &kp W           &kp E           &kp R          &kp T           &kp LC(DOWN)      &kp Y            &kp U          &kp I          &kp O            &kp P          &kp MINUS
-&kp CAPS       &kp A         &kp S           &kp D           &kp F          &kp G           &kp LC(LEFT)      &kp H            &kp J          &kp K          &kp L            &kp SEMI       &kp EQUAL
-&kp LSHFT      &kp Z         &kp X           &kp C           &kp V          &kp B           &kp LC(RIGHT)     &kp N            &kp M          &kp COMMA      &kp DOT          &kp FSLH       &kp APOS
-&kp LC(F3)     &kp LCTRL     &kp LEFT_ALT    &kp LEFT_GUI    &kp SPACE   &mo 2 &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kp SPACE&kp ENTER      &mo 1          &kp MINUS        &kp EQUAL
-            >; sensor-bindings = <&scroll_encoder>;                         display-name = "LAYER0";
+&kp GRAVE	&kp N1		&kp N2		&kp N3		&kp N4		&kp N5				&kp LC(UP)					&kp N6		&kp N7		&kp N8		&kp N9		&kp N0		&kp BACKSPACE
+&kp TAB		&kp Q		&kp W		&kp E		&kp R		&kp T				&kp LC(DOWN)				&kp Y		&kp U		&kp I		&kp O		&kp P		&kp MINUS
+&kp CAPS	&kp A		&kp S		&kp D		&kp F		&kp G				&kp LC(LEFT)				&kp H		&kp J		&kp K		&kp L		&kp SEMI	&kp EQUAL
+&kp LSHFT	&kp Z		&kp X		&kp C		&kp V		&kp B				&kp LC(RIGHT)				&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH	&kp APOS
+&kp LC(LG(SPACE))		&kp LCTRL	&kp LEFT_ALT&kp LEFT_GUI&kp SPACE	&mo 2	&kp LG(SPACE)	&kp SPACE	&kp ENTER	&mo 1		&kp MINUS	&kp EQUAL
+				>; sensor-bindings = <&scroll_encoder>;							display-name = "LAYER0";
         };
         layer_1 { bindings = <
-&kp ESC        &kp F1        &kp F2          &kp F3          &kp F4         &kp F5          &kp C_VOL_UP      &kp F6           &kp F7         &kp F8         &kp F9           &kp F10        &kp DELETE
-&none          &none         &kt W           &none           &none          &none           &kp C_VOL_DN      &kp PG_UP        &kp HOME       &kp UP         &kp END          &modm_brace    &kp BSLH
-&none          &kt A         &kt S           &kt D           &none          &none           &kp C_PREV        &kp PG_DN        &kp LEFT       &kp DOWN       &kp RIGHT        &kp LBKT       &kp RBKT
-&kt LSHIFT     &none         &none           &none           &none          &none           &kp C_NEXT        &none            &kp LA(LEFT)   &kp LA(UP)     &kp LA(RIGHT)    &none          &kp INSERT
-&kp C_MUTE     &kt LCTRL     &kt LEFT_ALT    &kt LEFT_GUI    &kt SPACE      &trans          &kp C_PP          &trans           &trans         &trans         &kp LA(DOWN)     &none
-            >; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>;         display-name = "1_Right";
+&kp ESC		&kp F1		&kp F2		&kp F3		&kp F4		&kp F5				&kp C_VOL_UP				&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DELETE
+&none		&none		&kt W		&none		&none		&none				&kp C_VOL_DN				&kp PG_UP	&kp HOME	&kp UP		&kp END		&modm_brace	&kp BSLH
+&none		&kt A		&kt S		&kt D		&none		&none				&kp C_PREV					&kp PG_DN	&kp LEFT	&kp DOWN	&kp RIGHT	&kp LBKT	&kp RBKT
+&kt LSHIFT	&none		&none		&none		&none		&none				&kp C_NEXT					&none		&kp LA(LEFT)&kp LA(UP)	&kp LA(RIGHT)&none		&kp INSERT
+&kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kt LCTRL &kt LEFT_ALT &kt LEFT_GUI &kt SPACE &trans &kp C_PP &trans	&trans		&trans		&kp LA(DOWN)&none
+				>; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>;			display-name = "1_Right";
         };
         layer_2 { bindings = <
-&kp ESC        &none         &none           &none           &none          &none           &mmv MOVE_UP      &none            &kp CLEAR      &kp SLASH      &kp ASTERISK     &kp BACKSPACE  &kp DELETE
-&trans         &none         &none           &mkp MCLK       &none          &none           &mmv MOVE_DOWN    &none            &kp N7         &kp N8         &kp N9           &kp MINUS      &kp EQUAL
-&trans         &mkp MB5      &mkp MB4        &mkp RCLK       &mkp LCLK      &none           &mmv MOVE_LEFT    &none            &kp N4         &kp N5         &kp N6           &kp PLUS       &none
-&trans         &none         &none           &none           &none          &none           &mmv MOVE_RIGHT   &none            &kp N1         &kp N2         &kp N3           &kp ENTER      &none
-&kp LC(LG(Q))  &trans        &trans          &trans          &trans         &trans          &mkp LCLK         &trans           &trans         &trans         &kp N0           &kp DOT
-            >; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;           display-name = "2_Left";
+&kp ESC		&kp F11		&kp F12		&kp F13		&kp F14		&kp F15				&mmv MOVE_UP				&none		&none		&kp SLASH	&kp ASTERISK&kp BACKSPACE&kp DELETE
+&kp BACKSPACE&none		&none		&mkp MCLK	&none		&none				&mmv MOVE_DOWN				&none		&kp N7		&kp N8		&kp N9		&kp MINUS	&kp EQUAL
+&kp DELETE	&mkp MB5	&mkp MB4	&mkp RCLK	&mkp LCLK	&none				&mmv MOVE_LEFT				&none		&kp N4		&kp N5		&kp N6		&kp PLUS	&kp APOS
+&trans		&none		&none		&none		&none		&none				&mmv MOVE_RIGHT				&none		&kp N1		&kp N2		&kp N3		&kp ENTER	&kp ENTER
+&kp C_MUTE				&trans		&trans		&trans		&trans	&trans		&mkp LCLK		&trans		&trans		&trans		&kp N0		&kp DOT
+				>; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;			display-name = "2_Left";
         };
         layer_3 { bindings = <
 &sys_reset     &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4    &kp UP            &sys_reset       &rgb_ug RGB_TOG&none          &none          &ext_power EP_ON &ext_power EP_OFF
 &bootloader    &bt BT_CLR    &bt BT_CLR_ALL  &none           &none          &none           &kp DOWN          &bootloader      &rgb_ug RGB_EFF&rgb_ug RGB_SPI&rgb_ug RGB_HUI  &rgb_ug RGB_BRI&rgb_ug RGB_BRD
 &studio_unlock &out OUT_USB  &out OUT_BLE    &none           &none          &none           &kp LEFT          &studio_unlock   &none          &none          &none            &none          &none
 &none          &none         &none           &none           &none          &none           &kp RIGHT         &none            &none          &none          &none            &none          &none
-&kp ESC        &none         &none           &none           &none          &trans          &kp ENTER         &trans           &trans         &trans         &none            &none
-            >; sensor-bindings = <&inc_dec_kp LEFT RIGHT>;                  display-name = "3_Both";
+&kp LC(LG(Q))  &none         &none           &none           &none          &trans          &kp ENTER         &trans           &trans         &trans         &none            &none
+                             >; sensor-bindings = <&inc_dec_kp RIGHT LEFT>; display-name = "3_Both";
         };
     };
 };
