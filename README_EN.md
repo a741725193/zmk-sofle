@@ -1,5 +1,13 @@
-- [Chinese](README.md)
 - [English](README_EN.md)
+
+# Paul Updated Keymap
+
+- 8 May 2025
+  1. Updated keyboard layout with Keymap Editor page
+ 
+  <img src="keymap-drawer/eyelash_sofle.svg" >
+
+
 
 # Update List
 
@@ -16,8 +24,7 @@
 
 For 3D printed model files or any issues and malfunctions with the keyboard, please contact 380465425@qq.com
 
-# Sofle Keymap
+# Previous Sofle Keymap
 
-
-<img src="keymap-drawer/sofle.svg" >
+was located at keymap-drawer/sofle.svg
 
