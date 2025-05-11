@@ -56,7 +56,7 @@ layers:
   - Ctl+Gui+$$mdi:keyboard-space$$
   - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-option$$
-  - $$mdi:apple-keyboard-command$$
+  - LGUI
   - $$mdi:keyboard-space$$
   - 2_Left
   - Gui+$$mdi:keyboard-space$$
@@ -86,10 +86,10 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:volume-low$$
-  - PG UP
-  - HOME
-  - $$mdi:arrow-up-bold$$
-  - END
+  - $$mdi:pan-down$$
+  - $$mdi:backspace-reverse-outline$$
+  - {t: '$$mdi:arrow-up-bold$$', s: PgUp}
+  - {t: '$$mdi:backspace$$', type: backspace}
   - {t: '{', s: '}'}
   - {t: \, s: '|'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -99,10 +99,10 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:skip-previous$$
-  - PG DN
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-down-bold$$
-  - $$mdi:arrow-right-bold$$
+  - $$mdi:pan-up$$
+  - {t: '$$mdi:arrow-left-bold$$', s: HOME}
+  - {t: '$$mdi:arrow-down-bold$$', s: PgDn}
+  - {t: '$$mdi:arrow-right-bold$$', s: END}
   - {t: '[', s: '{'}
   - {t: ']', s: '}'}
   - {t: '$$mdi:apple-keyboard-shift$$', h: toggle}
@@ -116,12 +116,12 @@ layers:
   - Alt+$$mdi:arrow-left-bold$$
   - Alt+$$mdi:arrow-up-bold$$
   - Alt+$$mdi:arrow-right-bold$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - Ins
+  - $$mdi:apple-keyboard-option$$
+  - $$mdi:apple-keyboard-shift$$
   - AC DESKTOP SHOW ALL APPLICATIONS
-  - {t: '$$mdi:apple-keyboard-control$$', h: toggle}
-  - {t: '$$mdi:apple-keyboard-option$$', h: toggle}
-  - {t: '$$mdi:apple-keyboard-command$$', h: toggle}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:keyboard-space$$', h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:play-pause$$
@@ -129,7 +129,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
   - Alt+$$mdi:arrow-down-bold$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - Ins
   2_Left:
   - {t: '`', s: '~'}
   - F11
@@ -145,11 +145,11 @@ layers:
   - {t: '$$mdi:backspace$$', type: backspace}
   - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:backspace$$', type: backspace}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:mouse-scroll-wheel$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:pan-down$$
+  - HOME
+  - {t: '$$mdi:arrow-up-bold$$', s: '$$mdi:menu-up$$'}
+  - END
+  - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '7', s: '&'}
@@ -158,11 +158,11 @@ layers:
   - {t: '-', s: _}
   - {t: '=', s: +}
   - $$mdi:backspace-reverse-outline$$
-  - '&mkp MB5'
-  - '&mkp MB4'
+  - $$mdi:pan-up$$
+  - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:menu-left$$'}
+  - {t: '$$mdi:arrow-down-bold$$', s: '$$mdi:menu-down$$'}
+  - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:menu-right$$'}
   - $$mdi:mouse-right-click-outline$$
-  - $$mdi:mouse-left-click-outline$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '4', s: $}
@@ -175,7 +175,7 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:mouse-scroll-wheel$$
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '1', s: '!'}
@@ -187,7 +187,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:keyboard-return$$', type: enter}
   - {type: held}
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
