@@ -99,10 +99,10 @@
         };
         layer_1 { bindings = <
 &kp ESC		&kp F1		&kp F2		&kp F3		&kp F4		&kp F5				&kp C_VOL_UP				&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DELETE
-&none		&none		&kt W		&none		&none		&none				&kp C_VOL_DN				&msc SCRL_DOWN&kp DELETE&mm_up		&kp BACKSPACE&mm_brace	&kp BSLH
-&none		&kt A		&kt S		&kt D		&none		&none				&kp C_PREV					&msc SCRL_UP&mm_left	&mm_down	&mm_right	&kp LBKT	&kp RBKT
-&kt LSHIFT	&none		&none		&none		&none		&none				&kp C_NEXT					&none		&kp LA(LEFT)&kp LA(UP)	&kp LA(RIGHT)&kp RALT	&kp RSHIFT
-&kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &trans &trans &trans &kt SPACE	&trans	&kp C_PP		&trans		&trans		&trans		&kp LA(DOWN)&kp INSERT
+&trans		&none		&kt W		&none		&none		&none				&kp C_VOL_DN				&kp PG_UP	&kp HOME	&kp UP		&kp END		&kp BACKSPACE&kp BSLH
+&trans		&kt A		&kt S		&kt D		&none		&none				&kp C_PREV					&kp PG_DN	&kp LEFT	&kp DOWN	&kp RIGHT	&kp LBKT	&kp RBKT
+&trans		&none		&none		&none		&none		&none				&kp C_NEXT					&kp RSHIFT	&kp PSCRN	&kp SLCK	&kp PAUSE_BREAK&kp RGUI	&kp RALT
+&kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &trans &trans &trans &kt SPACE	&trans	&kp C_PP		&trans		&trans		&trans		&kp C_POWER	&kp INSERT
 				>; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>;			display-name = "1_Right";
         };
         layer_2 { bindings = <
