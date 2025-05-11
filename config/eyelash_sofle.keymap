@@ -41,12 +41,51 @@
         };
     };
     behaviors {
-        modm_brace: mod_morph {
+        mm_brace: mod_morph_brace {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LBRC>, <&kp RBRC>;
-            mods = <(MOD_LSFT | MOD_RSFT)>;
-        };
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_up: mod_morph_up {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&kp PAGE_UP>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_down: mod_morph_down {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&kp PAGE_DOWN>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_left: mod_morph_left {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&kp HOME>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_right: mod_morph_right {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&kp END>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_mup: mod_morph_mouse_up {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&mmv MOVE_UP>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_mdown: mod_morph_mouse_down {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&mmv MOVE_DOWN>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_mleft: mod_morph_mouse_left {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&mmv MOVE_LEFT>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
+        mm_mright: mod_morph_mouse_right {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&mmv MOVE_RIGHT>;
+            mods = <(MOD_LSFT | MOD_RSFT)>; };
     };
     keymap {
         compatible = "zmk,keymap";
@@ -55,23 +94,23 @@
 &kp TAB		&kp Q		&kp W		&kp E		&kp R		&kp T				&kp LC(DOWN)				&kp Y		&kp U		&kp I		&kp O		&kp P		&kp MINUS
 &kp CAPS	&kp A		&kp S		&kp D		&kp F		&kp G				&kp LC(LEFT)				&kp H		&kp J		&kp K		&kp L		&kp SEMI	&kp EQUAL
 &kp LSHFT	&kp Z		&kp X		&kp C		&kp V		&kp B				&kp LC(RIGHT)				&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH	&kp APOS
-&kp LC(LG(SPACE))		&kp LCTRL	&kp LEFT_ALT&kp LEFT_GUI&kp SPACE	&mo 2	&kp LG(SPACE)	&kp SPACE	&kp ENTER	&mo 1		&kp MINUS	&kp EQUAL
+&kp LC(LG(SPACE))		&kp LCTRL	&kp LALT	&kp LGUI	&kp SPACE	&mo 2	&kp LG(SPACE)	&kp SPACE	&kp ENTER	&mo 1		&kp MINUS	&kp EQUAL
 				>; sensor-bindings = <&scroll_encoder>;							display-name = "LAYER0";
         };
         layer_1 { bindings = <
 &kp ESC		&kp F1		&kp F2		&kp F3		&kp F4		&kp F5				&kp C_VOL_UP				&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DELETE
-&none		&none		&kt W		&none		&none		&none				&kp C_VOL_DN				&kp PG_UP	&kp HOME	&kp UP		&kp END		&modm_brace	&kp BSLH
-&none		&kt A		&kt S		&kt D		&none		&none				&kp C_PREV					&kp PG_DN	&kp LEFT	&kp DOWN	&kp RIGHT	&kp LBKT	&kp RBKT
-&kt LSHIFT	&none		&none		&none		&none		&none				&kp C_NEXT					&none		&kp LA(LEFT)&kp LA(UP)	&kp LA(RIGHT)&none		&kp INSERT
-&kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &kt LCTRL &kt LEFT_ALT &kt LEFT_GUI &kt SPACE &trans &kp C_PP &trans	&trans		&trans		&kp LA(DOWN)&none
+&none		&none		&kt W		&none		&none		&none				&kp C_VOL_DN				&msc SCRL_DOWN&kp DELETE&mm_up		&kp BACKSPACE&mm_brace	&kp BSLH
+&none		&kt A		&kt S		&kt D		&none		&none				&kp C_PREV					&msc SCRL_UP&mm_left	&mm_down	&mm_right	&kp LBKT	&kp RBKT
+&kt LSHIFT	&none		&none		&none		&none		&none				&kp C_NEXT					&none		&kp LA(LEFT)&kp LA(UP)	&kp LA(RIGHT)&kp RALT	&kp RSHIFT
+&kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS &trans &trans &trans &kt SPACE	&trans	&kp C_PP		&trans		&trans		&trans		&kp LA(DOWN)&kp INSERT
 				>; sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>;			display-name = "1_Right";
         };
         layer_2 { bindings = <
 &kp GRAVE	&kp F11		&kp F12		&kp F13		&kp F14		&kp F15				&mmv MOVE_UP				&none		&none		&kp SLASH	&kp ASTERISK&kp BACKSPACE&kp DELETE
-&kp BACKSPACE&none		&none		&mkp MCLK	&none		&none				&mmv MOVE_DOWN				&none		&kp N7		&kp N8		&kp N9		&kp MINUS	&kp EQUAL
-&kp DELETE	&mkp MB5	&mkp MB4	&mkp RCLK	&mkp LCLK	&none				&mmv MOVE_LEFT				&none		&kp N4		&kp N5		&kp N6		&kp PLUS	&kp APOS
-&trans		&none		&none		&none		&none		&none				&mmv MOVE_RIGHT				&none		&kp N1		&kp N2		&kp N3		&kp ENTER	&kp ENTER
-&kp C_MUTE				&trans		&trans		&trans		&trans	&trans		&mkp LCLK		&trans		&trans		&trans		&kp N0		&kp DOT
+&kp BACKSPACE&msc SCRL_DOWN&kp HOME	&mm_mup		&kp END		&mkp LCLK			&mmv MOVE_DOWN				&none		&kp N7		&kp N8		&kp N9		&kp MINUS	&kp EQUAL
+&kp DELETE	&msc SCRL_UP&mm_mleft	&mm_mdown	&mm_mright	&mkp RCLK			&mmv MOVE_LEFT				&none		&kp N4		&kp N5		&kp N6		&kp PLUS	&kp APOS
+&trans		&none		&none		&none		&none		&mkp MCLK			&mmv MOVE_RIGHT				&none		&kp N1		&kp N2		&kp N3		&kp ENTER	&kp ENTER
+&kp C_MUTE				&trans		&trans		&trans		&kp ENTER	&trans	&mkp LCLK		&trans		&trans		&trans		&kp N0		&kp DOT
 				>; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;			display-name = "2_Left";
         };
         layer_3 { bindings = <
