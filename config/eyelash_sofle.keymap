@@ -29,61 +29,80 @@
 
 
 / {
-    macros {
-        mt_ctrl_s: mt_ctrl_s {
-            compatible = "zmk,behavior-mod-momentary";
-            #binding-cells = <0>;
-            bindings = <&kp S>;
-            mods = <(MOD_LCTL)>;
-            flavor = "hold-preferred";
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
             tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
         };
-
-        mt_alt_d: mt_alt_d {
-            compatible = "zmk,behavior-mod-momentary";
-            #binding-cells = <0>;
-            bindings = <&kp D>;
-            mods = <(MOD_LALT)>;
-            flavor = "hold-preferred";
+        lt: layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-        };
-
-        mt_gui_f: mt_gui_f {
-            compatible = "zmk,behavior-mod-momentary";
-            #binding-cells = <0>;
-            bindings = <&kp F>;
-            mods = <(MOD_LGUI)>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        mt_gui_j: mt_gui_j {
-            compatible = "zmk,behavior-mod-momentary";
-            #binding-cells = <0>;
-            bindings = <&kp J>;
-            mods = <(MOD_RGUI)>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        mt_alt_k: mt_alt_k {
-            compatible = "zmk,behavior-mod-momentary";
-            #binding-cells = <0>;
-            bindings = <&kp K>;
-            mods = <(MOD_RALT)>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-        };
-
-        mt_ctrl_l: mt_ctrl_l {
-            compatible = "zmk,behavior-mod-momentary";
-            #binding-cells = <0>;
-            bindings = <&kp L>;
-            mods = <(MOD_RCTL)>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            display-name = "Layer-Tap";
         };
     };
+
+    //macros {
+    //    mt_ctrl_s: mt_ctrl_s {
+    //        compatible = "zmk,behavior-mod-momentary";
+    //        #binding-cells = <0>;
+    //        bindings = <&kp S>;
+    //        mods = <(MOD_LCTL)>;
+    //        flavor = "hold-preferred";
+    //        tapping-term-ms = <200>;
+    //    };
+
+    //    mt_alt_d: mt_alt_d {
+    //        compatible = "zmk,behavior-mod-momentary";
+    //        #binding-cells = <0>;
+    //        bindings = <&kp D>;
+    //        mods = <(MOD_LALT)>;
+    //        flavor = "hold-preferred";
+    //        tapping-term-ms = <200>;
+    //    };
+
+    //    mt_gui_f: mt_gui_f {
+    //        compatible = "zmk,behavior-mod-momentary";
+    //        #binding-cells = <0>;
+    //        bindings = <&kp F>;
+    //        mods = <(MOD_LGUI)>;
+    //        flavor = "hold-preferred";
+    //        tapping-term-ms = <200>;
+    //    };
+
+    //    mt_gui_j: mt_gui_j {
+    //        compatible = "zmk,behavior-mod-momentary";
+    //        #binding-cells = <0>;
+    //        bindings = <&kp J>;
+    //        mods = <(MOD_RGUI)>;
+    //        flavor = "hold-preferred";
+    //        tapping-term-ms = <200>;
+    //    };
+
+    //    mt_alt_k: mt_alt_k {
+    //        compatible = "zmk,behavior-mod-momentary";
+    //        #binding-cells = <0>;
+    //        bindings = <&kp K>;
+    //        mods = <(MOD_RALT)>;
+    //        flavor = "hold-preferred";
+    //        tapping-term-ms = <200>;
+    //    };
+
+    //    mt_ctrl_l: mt_ctrl_l {
+    //        compatible = "zmk,behavior-mod-momentary";
+    //        #binding-cells = <0>;
+    //        bindings = <&kp L>;
+    //        mods = <(MOD_RCTL)>;
+    //        flavor = "hold-preferred";
+    //        tapping-term-ms = <200>;
+    //    };
+    //};
 
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
@@ -94,14 +113,16 @@
 
     keymap {
         compatible = "zmk,keymap";
+// 3rd row
+//&kp LSHIFT  &lt 1 A    &mt_ctrl_s    &mt_alt_d     &mt_gui_f &kp G      &kp LEFT_ARROW   &kp H      &mt_gui_j  &mt_alt_k  &mt_ctrl_l       &lt 2 SEMI  &kp APOS
 
         layer0 {
             bindings = <
-&kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4    &kp N5     &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R     &kp T      &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp LBRC
-&kp LSHIFT  &lt 1 A    &mt_ctrl_s    &mt_alt_d     &mt_gui_f &kp G      &kp LEFT_ARROW   &kp H      &mt_gui_j  &mt_alt_k  &mt_ctrl_l       &lt 2 SEMI  &kp APOS
-&kp LCTRL   &kp Z      &kp X         &kp C         &kp V     &kp B      &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp SLASH   &kp RBRC
-&kp C_MUTE  &kp FN0    &kp LALT      &kp LGUI      &mo 1     &kp SPACE  &kp ENTER        &kp ENTER  &mo 2      &kp MINUS  &kp EQUAL        &kp BSLH
+&kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4     &kp N5     &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
+&kp TAB     &kp Q      &kp W         &kp E         &kp R      &kp T      &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp LBRC
+&kp LSHIFT  &lt 1 A    &hm LCTRL S   &hm LALT D    &hm LGUI F &kp G      &kp LEFT_ARROW   &kp H      &hm RGUI J &hm RALT K &hm RCTRL L      &lt 2 SEMI  &kp APOS
+&kp LCTRL   &kp Z      &kp X         &kp C         &kp V      &kp B      &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp SLASH   &kp RBRC
+&kp C_MUTE  &kp FN0    &kp LALT      &kp LGUI      &mo 1      &kp SPACE  &kp ENTER        &kp ENTER  &mo 2      &kp MINUS  &kp EQUAL        &kp BSLH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
