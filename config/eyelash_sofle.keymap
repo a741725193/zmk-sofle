@@ -28,7 +28,6 @@
 };
 
 
-
 / {
     macros {
         mt_ctrl_s: mt_ctrl_s {
