@@ -97,17 +97,21 @@
 &kp LCTRL   &kp Z      &kp X         &kp C         &kp V     &kp B      &kp RIGHT_ARROW  &kp N       &kp M       &kp COMMA    &kp DOT      &kp SLASH      &kp RBRC
 &kp C_MUTE  &kp FN0    &kp LALT      &kp LGUI      &mo 1     &kp SPACE  &kp ENTER        &kp ENTER   &mo 2       &kp MINUS    &kp EQUAL    &kp BSLH
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "LAYER0";
         };
 
         layer1 {
             bindings = <
-&kp GRAVE   &kp F1           &kp F2           &kp F3            &kp F4            &kp F5            &kp F6            &kp F7           &kp F8        &kp F9        &kp F10       &trans
-&trans      &kp GRAVE        &mkp LCLK        &kp UP            &mkp RCLK         &mkp MB4          &kp PG_UP         &kp LBRC         &kp UP        &kp RBRC      &kp MINUS     &kp EQUAL
-&trans      &kp TILDE        &kp LEFT         &kp DOWN          &kp RIGHT         &mkp MB5          &kp PG_DN         &kp LBRACE       &kp DOWN      &kp RBRACE    &kp LBRC      &kp RBRC
-&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON   &rgb_ug RGB_EFF   &rgb_ug RGB_EFR   &rgb_ug RGB_SPI   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD  &kp INSERT    &kp F11       &kp F12       &trans
-&kp C_MUTE  &trans           &trans           &trans            &trans            &trans            &mkp LCLK         &trans           &trans        &trans        &trans        &trans
+&kp GRAVE   &kp F1           &kp F2          &kp F3            &kp F4            &kp F5            &mmv MOVE_UP      &kp F6            &kp F7           &kp F8        &kp F9        &kp F10       &trans
+&trans      &kp GRAVE        &mkp LCLK       &kp UP            &mkp RCLK         &mkp MB4          &mmv MOVE_DOWN    &kp PG_UP         &kp LBRC         &kp UP        &kp RBRC      &kp MINUS     &kp EQUAL
+&trans      &kp TILDE        &kp LEFT        &kp DOWN          &kp RIGHT         &mkp MB5          &mmv MOVE_LEFT    &kp PG_DN         &kp LBRACE       &kp DOWN      &kp RBRACE    &kp LBRC      &kp RBRC
+&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF   &rgb_ug RGB_EFR   &rgb_ug RGB_SPI   &mmv MOVE_RIGHT   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD  &kp INSERT    &kp F11       &kp F12       &trans
+&kp C_MUTE  &trans           &trans          &trans            &trans            &trans            &mkp LCLK         &trans            &trans           &trans        &trans        &trans
             >;
+
+            sensor-bindings = <&scroll_encoder>;
             display-name = "LAYER1";
         };
 
