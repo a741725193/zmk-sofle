@@ -91,11 +91,11 @@
 
         layer0 {
             bindings = <
-&kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4      &kp N5         &kp UP_ARROW     &kp N6      &kp N7      &kp N8       &kp N9       &kp N0         &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R       &kp T          &kp DOWN_ARROW   &kp Y       &kp U       &kp I        &kp O        &kp P          &kp LBRC
-&kp LSHIFT  &lt 1 A    &mt_ctrl_s    &mt_alt_d     &mt_gui_f   &kp G          &kp LEFT_ARROW   &kp H       &mt_gui_j   &mt_alt_k    &mt_ctrl_l   &lt 2 SEMI     &kp APOS
-&kp LCTRL   &kp Z      &kp X         &kp C         &kp V       &kp B          &kp RIGHT_ARROW  &kp N       &kp M       &kp COMMA    &kp DOT      &kp SLASH      &kp RBRC
-&kp C_MUTE  &kp FN0    &kp LALT      &kp LGUI      &mo 1       &kp SPACE      &kp ENTER        &kp ENTER   &kp ENTER   &mo 2        &kp MINUS    &kp EQUAL      &kp BSLH
+&kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4     &kp N5     &kp UP_ARROW     &kp N6      &kp N7      &kp N8       &kp N9       &kp N0         &kp BACKSPACE
+&kp TAB     &kp Q      &kp W         &kp E         &kp R      &kp T      &kp DOWN_ARROW   &kp Y       &kp U       &kp I        &kp O        &kp P          &kp LBRC
+&kp LSHIFT  &lt 1 A    &mt_ctrl_s    &mt_alt_d     &mt_gui_f  &kp G      &kp LEFT_ARROW   &kp H       &mt_gui_j   &mt_alt_k    &mt_ctrl_l   &lt 2 SEMI     &kp APOS
+&kp LCTRL   &kp Z      &kp X         &kp C         &kp V      &kp B      &kp RIGHT_ARROW  &kp N       &kp M       &kp COMMA    &kp DOT      &kp SLASH      &kp RBRC
+&kp C_MUTE  &kp FN0    &kp LALT      &kp LGUI      &mo 1      &kp SPACE  &kp ENTER        &kp ENTER   &kp ENTER   &mo 2        &kp MINUS    &kp EQUAL      &kp BSLH
             >;
             display-name = "LAYER0";
         };
