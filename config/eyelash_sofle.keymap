@@ -104,11 +104,11 @@
 
         layer1 {
             bindings = <
-&kp GRAVE   &kp F1           &kp F2          &kp F3            &kp F4            &kp F5            &mmv MOVE_UP      &kp F6            &kp F7           &kp F8        &kp F9        &kp F10       &trans
-&trans      &kp GRAVE        &mkp LCLK       &kp UP            &mkp RCLK         &mkp MB4          &mmv MOVE_DOWN    &kp PG_UP         &kp LBRC         &kp UP        &kp RBRC      &kp MINUS     &kp EQUAL
-&trans      &kp TILDE        &kp LEFT        &kp DOWN          &kp RIGHT         &mkp MB5          &mmv MOVE_LEFT    &kp PG_DN         &kp LBRACE       &kp DOWN      &kp RBRACE    &kp LBRC      &kp RBRC
-&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF   &rgb_ug RGB_EFR   &rgb_ug RGB_SPI   &mmv MOVE_RIGHT   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD  &kp INSERT    &kp F11       &kp F12       &trans
-&kp C_MUTE  &trans           &trans          &trans            &trans            &trans            &mkp LCLK         &trans            &trans           &trans        &trans        &trans
+&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4            &kp F5            &mmv MOVE_UP      &kp F6            &kp F7           &kp F8        &kp F9        &kp F10       &trans
+&trans      &kp GRAVE        &mkp LCLK       &kp UP           &mkp RCLK         &mkp MB4          &mmv MOVE_DOWN    &kp PG_UP         &kp LBRC         &kp UP        &kp RBRC      &kp MINUS     &kp EQUAL
+&trans      &kp TILDE        &kp LEFT        &kp DOWN         &kp RIGHT         &mkp MB5          &mmv MOVE_LEFT    &kp PG_DN         &kp LBRACE       &kp DOWN      &kp RBRACE    &kp LBRC      &kp RBRC
+&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR   &rgb_ug RGB_SPI   &mmv MOVE_RIGHT   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD  &kp INSERT    &kp F11       &kp F12       &trans
+&kp C_MUTE  &trans           &trans          &trans           &trans            &trans            &mkp LCLK         &trans            &trans           &trans        &trans        &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
