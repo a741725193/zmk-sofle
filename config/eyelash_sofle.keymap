@@ -90,7 +90,7 @@
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
         tap-ms = <100>;
-    }
+    };
 
     keymap {
         compatible = "zmk,keymap";
