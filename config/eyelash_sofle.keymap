@@ -91,22 +91,22 @@
 
         layer0 {
             bindings = <
-&kp GRAVE  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp N6    &kp N7    &kp N8    &kp N9     &kp N0       &kp BACKSPACE
-&kp TAB    &kp Q     &kp W     &kp E     &kp R     &kp T          &kp Y     &kp U     &kp I     &kp O      &kp P        &kp LBRC
-&kp LSHIFT &lt 1 A     &mt_ctrl_s &mt_alt_d &mt_gui_f &kp G          &kp H     &mt_gui_j &mt_alt_k &mt_ctrl_l &lt 2 SEMI    &kp APOS
-&kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B          &kp N     &kp M     &kp COMMA &kp DOT    &kp SLASH    &kp RBRC
-&kp C_MUTE &kp FN0   &kp LALT  &kp LGUI  &mo 1     &kp SPACE      &kp ENTER &kp ENTER &kp ENTER &mo 2      &kp MINUS    &kp EQUAL
+&kp GRAVE    &kp N1      &kp N2        &kp N3        &kp N4      &kp N5         &kp N6      &kp N7      &kp N8      &kp N9       &kp N0       &kp BACKSPACE
+&kp TAB      &kp Q       &kp W         &kp E         &kp R       &kp T          &kp Y       &kp U       &kp I       &kp O        &kp P        &kp LBRC
+&kp LSHIFT   &lt 1 A     &mt_ctrl_s    &mt_alt_d     &mt_gui_f   &kp G          &kp H       &mt_gui_j   &mt_alt_k   &mt_ctrl_l   &lt 2 SEMI   &kp APOS
+&kp LCTRL    &kp Z       &kp X         &kp C         &kp V       &kp B          &kp N       &kp M       &kp COMMA   &kp DOT      &kp SLASH    &kp RBRC
+&kp C_MUTE   &kp FN0     &kp LALT      &kp LGUI      &mo 1       &kp SPACE      &kp ENTER   &kp ENTER   &kp ENTER   &mo 2        &kp MINUS    &kp EQUAL        &kp BSLH
             >;
             display-name = "LAYER0";
         };
 
         layer1 {
             bindings = <
-&kp GRAVE   &kp F1       &kp F2       &kp F3      &kp F4        &kp F5            &kp F6      &kp F7       &kp F8        &kp F9        &kp F10       &trans
-&trans      &kp GRAVE    &mkp LCLK    &kp UP      &mkp RCLK     &mkp MB4          &kp PG_UP   &kp LBRC     &kp UP        &kp RBRC      &kp MINUS     &kp EQUAL
-&trans      &kp TILDE    &kp LEFT     &kp DOWN    &kp RIGHT     &mkp MB5          &kp PG_DN   &kp LBRACE   &kp DOWN      &kp RBRACE    &kp LBRC      &kp RBRC
-&trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT  &kp F11       &kp F12       &trans
-&kp C_MUTE  &trans       &trans       &trans      &trans        &trans            &mkp LCLK   &trans       &trans        &trans        &trans        &trans
+&kp GRAVE   &kp F1           &kp F2           &kp F3            &kp F4            &kp F5            &kp F6            &kp F7           &kp F8        &kp F9        &kp F10       &trans
+&trans      &kp GRAVE        &mkp LCLK        &kp UP            &mkp RCLK         &mkp MB4          &kp PG_UP         &kp LBRC         &kp UP        &kp RBRC      &kp MINUS     &kp EQUAL
+&trans      &kp TILDE        &kp LEFT         &kp DOWN          &kp RIGHT         &mkp MB5          &kp PG_DN         &kp LBRACE       &kp DOWN      &kp RBRACE    &kp LBRC      &kp RBRC
+&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON   &rgb_ug RGB_EFF   &rgb_ug RGB_EFR   &rgb_ug RGB_SPI   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD  &kp INSERT    &kp F11       &kp F12       &trans
+&kp C_MUTE  &trans           &trans           &trans            &trans            &trans            &mkp LCLK         &trans           &trans        &trans        &trans        &trans
             >;
             display-name = "LAYER1";
         };
