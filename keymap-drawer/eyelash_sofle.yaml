@@ -98,7 +98,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - '&mkp MB5'
-  - '&mmv K_PREVIOUS'
+  - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - PG DN
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
@@ -111,12 +111,12 @@ layers:
   - RGB EFF
   - RGB EFR
   - RGB SPI
-  - '&mmv K_FORWARD'
+  - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
   - RGB BRI
   - RGB BRD
   - Ins
-  - F11
-  - F12
+  - {t: '-', s: _}
+  - _
   - {t: '$$mdi:transfer$$', type: trans}
   - PLAY PAUSE
   - {t: '$$mdi:transfer$$', type: trans}
