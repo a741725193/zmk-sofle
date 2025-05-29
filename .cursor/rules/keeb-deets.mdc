@@ -1,0 +1,94 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Context: Sofle Choc ZMK-Eyelash Keyboard Setup
+
+# ZMK Sofle Choc Configuration
+
+This repo contains all the ZMK firmware, overlays, and keymap settings for a Sofle Choc split ergonomic keyboard 
+with nRF52840 MCUs, Nice!View displays, RGB underglow, and ZMK Studio support.
+
+keyboard: Sofle Choc (split ergonomic 40%), nRF52840 MCU on both halves
+
+repo structure:
+  .github/workflows/
+  boards/arm/eyelash_sofle/
+  config/
+  keymap-drawer/
+  zephyr/
+  build.yaml
+  config/eyelash_sofle.conf
+  keymap_drawer.config.yaml
+  README.md, README_EN.md
+
+shields:
+  nice_view_custom      # defines Nice!View display SPI pins & controller
+  settings_reset        # defines hardware reset button overlay
+
+build.yaml include entries:
+  - board: eyelash_sofle_left
+    shield: nice_view_custom
+    snippet: studio-rpc-usb-uart
+    cmake-args:
+      - -DCONFIG_ZMK_STUDIO=y
+      - -DCONFIG_ZMK_STUDIO_LOCKING=n
+    artifact-name: eyelash_sofle_studio_left
+
+  - board: eyelash_sofle_right
+    shield: nice_view_custom
+
+  - board: eyelash_sofle_left
+    shield: settings_reset
+
+config flags (config/eyelash_sofle.conf):
+  CONFIG_ZMK_SLEEP=y
+  CONFIG_CLOCK_CONTROL_NRF_K32SRC_XTAL=y
+  CONFIG_CLOCK_CONTROL_NRF_K32SRC_30PPM=y
+  CONFIG_WS2812_STRIP=y
+  CONFIG_ZMK_RGB_UNDERGLOW=y
+  CONFIG_ZMK_RGB_UNDERGLOW_EXT_POWER=y
+  CONFIG_ZMK_RGB_UNDERGLOW_ON_START=n
+  CONFIG_ZMK_RGB_UNDERGLOW_BRT_MAX=90
+  CONFIG_ZMK_RGB_UNDERGLOW_AUTO_OFF_IDLE=y
+  CONFIG_ZMK_RGB_UNDERGLOW_AUTO_OFF_USB=y
+  CONFIG_ZMK_RGB_UNDERGLOW_HUE_START=160
+  CONFIG_ZMK_RGB_UNDERGLOW_EFF_START=3
+  CONFIG_ZMK_EXT_POWER=y
+  CONFIG_ZMK_POINTING=y
+  CONFIG_BT_CTLR_TX_PWR_PLUS_8=y
+  CONFIG_ZMK_HID_REPORT_TYPE_NKRO=n
+  CONFIG_ZMK_BACKLIGHT=y
+  CONFIG_ZMK_BACKLIGHT_BRT_START=50
+  CONFIG_ZMK_BACKLIGHT_AUTO_OFF_IDLE=y
+  CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=8
+  CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS=8
+  CONFIG_ZMK_BLE=y
+
+layout preferences:
+  base layer: QWERTY
+  thumb keys: Space | RGB Toggle | Layer-momentary
+  home-row mods: media controls on left half
+  RGB default: white, with toggle & cycle bindings
+  macOS modifiers order: Command, Option, Control
+
+ZMK Studio notes:
+  USB RPC: enabled via studio-rpc-usb-uart snippet
+  Native macOS app: BLE transport only (requires studio-rpc-ble)
+  Web UI: needs Chromium (Chrome/Edge) for WebUSB
+
+keymap & DT:
+  boards/arm/eyelash_sofle/ contains shield DTS overlays
+  devicetree module.yml registers board
+  keymap-drawer generates visual layout from keymap_drawer.config.yaml
+
+tips:
+  - Always flash eyelash_sofle_studio_left.uf2 to left half
+  - Use standalone settings_reset UF2 only for reset config tests
+  - For merged overlays, create a combined overlay file that #include’s both .overlay files
+
+references:
+  • ZMK documentation: https://zmk.dev
+  • ZMK Studio docs:  https://zmk.dev/docs/studio
+  • Original upstream repo: https://github.com/a741725193/zmk-sofle
