@@ -93,7 +93,7 @@ layers:
   - {t: '-', s: _}
   - {t: '=', s: +}
   - {t: '$$mdi:transfer$$', type: trans}
-  - '&unicode U_AE'
+  - '&de_ae'
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
@@ -143,7 +143,7 @@ layers:
   - F8
   - F9
   - F10
-  - '&unicode U_SZ'
+  - '&de_sz'
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:bluetooth-off$$
   - BT CLR ALL
@@ -152,9 +152,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - '&macro1'
-  - '&unicode U_UE'
+  - '&de_ue'
   - $$mdi:arrow-up-bold$$
-  - '&unicode U_OE'
+  - '&de_oe'
   - {t: '-', s: _}
   - {t: '=', s: +}
   - {t: '$$mdi:transfer$$', type: trans}
