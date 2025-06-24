@@ -3,13 +3,14 @@
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <dt-bindings/zmk/unicode.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
+#include "zmk-helpers/helper.h"
+#include "zmk-helpers/unicode-chars/german.dtsi"
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
@@ -68,7 +69,7 @@
             bindings = <
 &kp F12         &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
 &trans          &kp HOME         &kp END         &kp UP_ARROW     &kp DELETE       &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
-&trans          &unicode U_AE    &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW  &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&trans          &de_ae    &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW  &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &kp LEFT_SHIFT  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
 &kp C_MUTE      &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
             >;
@@ -79,8 +80,8 @@
 
         right-l1 {
             bindings = <
-&kp TILDE       &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6   &kp F7          &kp F8          &kp F9           &kp F10    &unicode U_SZ
-&trans          &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &macro1  &unicode U_UE           &kp UP_ARROW    &unicode U_OE            &kp MINUS  &kp EQUAL
+&kp TILDE       &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6   &kp F7          &kp F8          &kp F9           &kp F10    &de_sz
+&trans          &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &macro1  &de_ue           &kp UP_ARROW    &de_oe            &kp MINUS  &kp EQUAL
 &trans          &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LBRC   &kp RBRC
 &kp LEFT_SHIFT  &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans   &kp HOME        &kp END         &kp KP_NUMLOCK   &trans     &trans
 &trans          &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans   &trans          &trans          &trans           &trans
