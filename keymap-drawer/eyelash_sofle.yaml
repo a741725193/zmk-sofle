@@ -126,7 +126,7 @@ layers:
   - {t: '2', type: held}
   - $$mdi:mouse-left-click-outline$$
   - {t: '2', type: held alternate}
-  - '~'
+  - \
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
