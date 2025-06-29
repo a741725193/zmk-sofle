@@ -55,8 +55,8 @@
 &kp C_MUTE  &kp RCTRL  &kp LGUI  &kp LALT  &kp SPACE  &lt LOWER LBKT         &mkp LCLK        &lt LOWER RBKT   &lt RAISE SPACE  &kp MINUS  &kp EQUAL  &lt LOWER C_PP
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "DEFAULT";
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
         };
 
         1 {
@@ -70,7 +70,7 @@
             >;
 
             display-name = "RAISE";
-            sensor-bindings = <&inc_dec_kp RC(-) RC(=)>;
+            sensor-bindings = <&inc_dec_kp = ->;
         };
 
         2 {
