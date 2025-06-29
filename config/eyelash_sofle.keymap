@@ -70,7 +70,7 @@
             >;
 
             display-name = "RAISE";
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&inc_dec_kp RC(-) RC(=)>;
         };
 
         2 {
@@ -79,11 +79,11 @@
 &trans      &kp INS       &kp PSCRN     &trans        &trans        &trans             &trans  &trans  &trans  &trans  &trans    &trans    &kp DELETE
 &trans      &trans        &trans        &trans        &trans        &trans             &trans  &trans  &trans  &trans  &trans    &trans    &trans
 &trans      &trans        &trans        &trans        &trans        &trans             &trans  &trans  &trans  &trans  &trans    &trans    &trans
-&kp C_MUTE  &trans        &trans        &trans        &trans        &trans             &trans  &trans  &trans  &trans  &trans    &trans
+&kp RC(0)   &trans        &trans        &trans        &trans        &trans             &trans  &trans  &trans  &trans  &trans    &trans
             >;
 
             display-name = "LOWER";
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&scroll_encoder>;            
         };
 
         3 {
