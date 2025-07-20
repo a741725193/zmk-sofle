@@ -34,7 +34,7 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-        tap-ms = <100>;
+        tap-ms = <200>;
     };
 
     keymap {
@@ -49,8 +49,8 @@
 &kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "LAYER0";
+            display-name = "main";
+            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_1 {
@@ -59,11 +59,11 @@
 &trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
 &trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
+&kp C_MUTE  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI &rgb_ug RGB_BRD  &rgb_ug RGB_BRD  &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
             >;
 
-            display-name = "layer1";
-            sensor-bindings = <&scroll_encoder>;
+            display-name = "func";
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
         };
 
         layer_2 {
@@ -76,16 +76,6 @@
             >;
 
             sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_3 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
         };
     };
 };
