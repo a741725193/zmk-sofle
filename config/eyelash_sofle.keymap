@@ -114,12 +114,12 @@
 				>; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;			display-name = "2_Left";
         };
         layer_3 { bindings = <
-&sys_reset     &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4    &kp UP            &sys_reset       &rgb_ug RGB_TOG&none          &none          &ext_power EP_ON &ext_power EP_OFF
-&bootloader    &bt BT_CLR    &bt BT_CLR_ALL  &none           &none          &none           &kp DOWN          &bootloader      &rgb_ug RGB_EFF&rgb_ug RGB_SPI&rgb_ug RGB_HUI  &rgb_ug RGB_BRI&rgb_ug RGB_BRD
-&studio_unlock &out OUT_USB  &out OUT_BLE    &none           &none          &none           &kp LEFT          &studio_unlock   &none          &none          &none            &none          &none
-&none          &none         &none           &none           &none          &none           &kp RIGHT         &none            &none          &none          &none            &none          &none
-&kp LC(LG(Q))  &none         &none           &none           &none          &trans          &kp ENTER         &trans           &trans         &trans         &none            &none
-                             >; sensor-bindings = <&inc_dec_kp RIGHT LEFT>; display-name = "3_Both";
+&sys_reset	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&kp UP	&sys_reset	&rgb_ug RGB_TOG	&none	&none	&ext_power EP_ON	&ext_power EP_OFF
+&bootloader	&none		&none		&none		&none		&out OUT_BLE		&kp DOWN					&bootloader	&rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_HUI &rgb_ug RGB_BRI &rgb_ug RGB_BRD
+&studio_unlock &none	&none		&none		&none		&out OUT_USB		&kp LEFT					&studio_unlock &none	&none		&none		&none		&none
+&none		&none		&none		&none		&none		&none				&kp RIGHT					&none		&none		&none		&none		&none		&none
+&kp LC(LG(Q))			&none		&none		&none		&none		&trans	&kp ENTER		&bt BT_CLR_ALL &bt BT_CLR &trans	&none		&none
+                >; sensor-bindings = <&inc_dec_kp RIGHT LEFT>;					display-name = "3_Both";
         };
     };
 };
