@@ -9,9 +9,6 @@ manifest:
     - name: gpeye
       url-base: https://github.com/GPeye
   projects:
-    - name: eyelash_sofle
-      url: https://github.com/a741725193/zmk-sofle
-      revision: refactor
     - name: mario-peripheral-animation
       remote: gpeye
       revision: main 
@@ -20,4 +17,4 @@ manifest:
       revision: main
       import: app/west.yml
   self:
-    path: config
+    path: boards

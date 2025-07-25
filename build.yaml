@@ -1,7 +1,7 @@
 ---
 include:
-  - board: eyelash_sofle_left
-    shield: nice_view
+ # - board: eyelash_sofle_left
+#    shield: nice_view
   - board: eyelash_sofle_right
     shield: nice_view_custom
   - board: eyelash_sofle_left
