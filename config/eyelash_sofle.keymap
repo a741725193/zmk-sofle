@@ -69,11 +69,11 @@
 
         layer_2 {
             bindings = <
-&kp F1      &kp F2                            &kp F3           &kp F4           &kp F5           &kp F6             &mmv MOVE_UP     &kp F7  &kp F8  &kp F9      &kp F10    &kp F11      &kp F12
-&bt BT_CLR  &bt BT_SEL 0                      &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4       &mmv MOVE_DOWN   &none   &none   &none       &none      &none        &none
-&none       &none                             &none            &none            &none            &out OUT_TOG       &mmv MOVE_LEFT   &none   &none   &none       &none      &none        &none
-&none       &rgb_ug RGB_COLOR_HSB(261,97,38)  &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &rgb_ug RGB_TOG    &mmv MOVE_RIGHT  &none   &none   &sys_reset  &soft_off  &bootloader  &none
-&kp C_MUTE  &none                             &none            &none            &none            &none              &mkp LCLK        &none   &none   &none       &none      &none
+&kp F1      &kp F2                            &kp F3           &kp F4           &kp F5           &kp F6             &mmv MOVE_UP     &kp F7      &kp F8  &kp F9      &kp F10    &kp F11      &kp F12
+&none       &bt BT_SEL 0                      &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4       &mmv MOVE_DOWN   &bt BT_CLR  &none   &none       &none      &none        &none
+&none       &none                             &none            &none            &none            &out OUT_TOG       &mmv MOVE_LEFT   &none       &none   &none       &none      &none        &none
+&none       &rgb_ug RGB_COLOR_HSB(261,97,38)  &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &rgb_ug RGB_TOG    &mmv MOVE_RIGHT  &none       &none   &sys_reset  &soft_off  &bootloader  &none
+&kp C_MUTE  &none                             &none            &none            &none            &none              &mkp LCLK        &none       &none   &none       &none      &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
