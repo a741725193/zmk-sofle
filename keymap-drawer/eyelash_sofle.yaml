@@ -64,7 +64,7 @@ layers:
   - {t: '$$mdi:keyboard-space$$', h: RAISE}
   - {t: '-', s: _}
   - {t: '=', s: +}
-  - {t: '$$mdi:play-pause$$', h: LOWER}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   RAISE:
   - {t: '`', s: '~'}
   - F1
@@ -129,7 +129,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: GAME, h: toggle}
   LOWER:
   - $$mdi:keyboard-esc$$
   - {h: '1', s: '$$mdi:bluetooth-connect$$'}
@@ -192,9 +192,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {type: held alternate}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {type: held alternate}
+  - $$mdi:skip-previous$$
+  - $$mdi:skip-next$$
+  - $$mdi:play-pause$$
   GAME:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -259,4 +259,4 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: DEFAULT, h: toggle}
