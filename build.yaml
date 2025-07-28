@@ -3,9 +3,9 @@ include:
  # - board: eyelash_sofle_left
 #    shield: nice_view
   - board: eyelash_sofle_right
-    shield: urchin_left nice_view_adapter  nice_view
+    shield: nice_view_custom
   - board: eyelash_sofle_left
-    shield: urchin_right nice_view_adapter nice_view_custom #custom shield
+    shield: nice_view
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
     artifact-name: eyelash_sofle_studio_left
