@@ -86,8 +86,8 @@ layers:
   - \
   - AltGr+7
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
-  - AltGr+0
-  - Sft+\
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: ']', s: '}'}
@@ -99,9 +99,9 @@ layers:
   - AltGr+\
   - Sft+8
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
-  - Sft+9
-  - '&lambda'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - Sft+\
+  - '&lambda'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '#'
   - {t: '$$mdi:transfer$$', type: trans}
@@ -112,10 +112,10 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - AltGr+8
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - AltGr+0
+  - Sft+9
   - AltGr+9
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:volume-off$$
