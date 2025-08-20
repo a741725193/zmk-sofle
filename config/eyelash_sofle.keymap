@@ -84,11 +84,11 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp NUMBER_1  &kp RA(NUMBER_2)  &kp RA(NUMBER_3)     &kp RA(NUMBER_4)  &kp RA(NUMBER_5)    &mmv MOVE_UP     &kp NUMBER_6  &kp RA(NUMBER_7)          &kp RA(NUMBER_8)  &kp RA(NUMBER_9)  &kp RA(NUMBER_0)  &kp RA(MINUS)
-&none       &none         &none             &none                &none             &none               &mmv MOVE_DOWN   &none         &none                     &none             &none             &kp RBKT          &none
-&trans      &none         &none             &kp RA(NON_US_BSLH)  &kp NON_US_BSLH   &none               &mmv MOVE_LEFT   &none         &kp RS(NON_US_BACKSLASH)  &lambda           &none             &kp NON_US_HASH   &trans
-&trans      &none         &kp RA(NUMBER_8)  &kp LS(NUMBER_8)     &kp RA(NUMBER_7)  &none               &mmv MOVE_RIGHT  &none         &kp RA(NUMBER_0)          &kp RS(NUMBER_9)  &kp RA(NUMBER_9)  &none             &trans
-&kp C_MUTE  &trans        &trans            &trans               &trans            &trans              &mkp LCLK        &trans        &trans                    &trans            &trans            &trans
+&kp GRAVE   &kp NUMBER_1  &kp RA(NUMBER_2)  &kp RA(NUMBER_3)  &kp RA(NUMBER_4)  &kp RA(NUMBER_5)    &mmv MOVE_UP     &kp NUMBER_6  &kp RA(NUMBER_7)          &kp RA(NUMBER_8)  &kp RA(NUMBER_9)  &kp RA(NUMBER_0)  &kp RA(MINUS)
+&none       &none         &none             &none             &none             &none               &mmv MOVE_DOWN   &none         &none                     &none             &none             &kp RBKT          &none
+&trans      &none         &none             &none             &none             &none               &mmv MOVE_LEFT   &none         &kp RS(NON_US_BACKSLASH)  &lambda           &none             &kp NON_US_HASH   &trans
+&trans      &none         &kp RA(NUMBER_8)  &kp LS(NUMBER_8)  &kp RA(NUMBER_7)  &none               &mmv MOVE_RIGHT  &none         &kp RA(NUMBER_0)          &kp RS(NUMBER_9)  &kp RA(NUMBER_9)  &none             &trans
+&kp C_MUTE  &trans        &trans            &trans            &trans            &trans              &mkp LCLK        &trans        &trans                    &trans            &trans            &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
