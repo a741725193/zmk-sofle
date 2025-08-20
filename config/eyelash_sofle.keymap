@@ -84,11 +84,11 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp NUMBER_1     &kp RA(NUMBER_2)  &kp RA(NUMBER_3)  &kp RA(NUMBER_4)          &kp RA(NUMBER_5)    &mmv MOVE_UP     &kp NUMBER_6      &kp RA(NUMBER_7)          &kp RA(NUMBER_8)  &kp RA(NUMBER_9)  &kp RA(NUMBER_0)  &kp RA(MINUS)
-&none       &none            &none             &none             &kp NON_US_BACKSLASH      &kp RA(NUMBER_7)    &mmv MOVE_DOWN   &kp RA(NUMBER_0)  &kp RS(NON_US_BACKSLASH)  &none             &none             &kp RBKT          &none
-&trans      &none            &none             &none             &kp RA(NON_US_BACKSLASH)  &kp LS(NUMBER_8)    &mmv MOVE_LEFT   &kp RS(NUMBER_9)  &lambda                   &none             &none             &kp NON_US_HASH   &trans
-&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON    &rgb_ug RGB_EFF   &rgb_ug RGB_EFR           &kp RA(NUMBER_8)    &mmv MOVE_RIGHT  &kp RA(NUMBER_9)  &none                     &none             &none             &none             &trans
-&kp C_MUTE  &trans           &trans            &trans            &trans                    &trans              &mkp LCLK        &trans            &trans                    &trans            &trans            &trans
+&kp GRAVE   &kp NUMBER_1  &kp RA(NUMBER_2)  &kp RA(NUMBER_3)  &kp RA(NUMBER_4)          &kp RA(NUMBER_5)    &mmv MOVE_UP     &kp NUMBER_6      &kp RA(NUMBER_7)          &kp RA(NUMBER_8)  &kp RA(NUMBER_9)  &kp RA(NUMBER_0)  &kp RA(MINUS)
+&none       &none         &none             &none             &kp NON_US_BACKSLASH      &kp RA(NUMBER_7)    &mmv MOVE_DOWN   &kp RA(NUMBER_0)  &kp RS(NON_US_BACKSLASH)  &none             &none             &kp RBKT          &none
+&trans      &none         &none             &none             &kp RA(NON_US_BACKSLASH)  &kp LS(NUMBER_8)    &mmv MOVE_LEFT   &kp RS(NUMBER_9)  &lambda                   &none             &none             &kp NON_US_HASH   &trans
+&trans      &none         &none             &none             &none                     &kp RA(NUMBER_8)    &mmv MOVE_RIGHT  &kp RA(NUMBER_9)  &none                     &none             &none             &none             &trans
+&kp C_MUTE  &trans        &trans            &trans            &trans                    &trans              &mkp LCLK        &trans            &trans                    &trans            &trans            &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -109,11 +109,11 @@
 
         layer_3 {
             bindings = <
-&trans  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &out OUT_USB  &out OUT_BLE    &trans        &trans        &to 4           &mmv MOVE_LEFT   &to 0   &trans  &trans  &trans  &trans  &trans
-&trans  &trans        &trans          &trans        &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4    &mmv MOVE_UP     &trans  &trans  &trans  &trans  &trans  &trans
+&out OUT_BLE  &trans           &trans        &trans           &trans           &trans          &mmv MOVE_DOWN   &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans           &trans        &trans           &trans           &to 4           &mmv MOVE_LEFT   &to 0   &trans  &trans  &trans  &trans  &trans
+&out OUT_USB  &rgb_ug RGB_TOG  &trans        &rgb_ug RGB_EFR  &rgb_ug RGB_EFF  &trans          &mmv MOVE_RIGHT  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans           &trans        &trans           &trans           &trans          &mkp LCLK        &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
