@@ -2,8 +2,10 @@ name: Build ZMK firmware
 on:
   workflow_dispatch:
   push:
+    paths:
+      - 'zmk-sofle-config/**'
     paths-ignore:
-      - "keymap-drawer/**"
+      - 'zmk-sofle-config/keymap-drawer/**'
 
 jobs:
   build:

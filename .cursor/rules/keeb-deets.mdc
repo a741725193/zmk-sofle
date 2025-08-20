@@ -66,18 +66,6 @@ config flags (config/eyelash_sofle.conf):
   CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS=8
   CONFIG_ZMK_BLE=y
 
-layout preferences:
-  base layer: QWERTY
-  thumb keys: Space | RGB Toggle | Layer-momentary
-  home-row mods: media controls on left half
-  RGB default: white, with toggle & cycle bindings
-  macOS modifiers order: Command, Option, Control
-
-ZMK Studio notes:
-  USB RPC: enabled via studio-rpc-usb-uart snippet
-  Native macOS app: BLE transport only (requires studio-rpc-ble)
-  Web UI: needs Chromium (Chrome/Edge) for WebUSB
-
 keymap & DT:
   boards/arm/eyelash_sofle/ contains shield DTS overlays
   devicetree module.yml registers board

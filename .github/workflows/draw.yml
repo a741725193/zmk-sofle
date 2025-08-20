@@ -3,9 +3,10 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "config/**"
-      - .github/workflows/draw.yml
-      - keymap_drawer.config.yaml
+      - 'zmk-sofle-config/config/**'
+      - '.github/workflows/draw.yml'
+      - 'zmk-sofle-config/keymap_drawer.config.yaml'
+      - 'zmk-sofle-config/keymap-drawer/**'
 
 jobs:
   draw:
