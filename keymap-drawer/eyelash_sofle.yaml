@@ -96,11 +96,11 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - '|'
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - Sft+\
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '&lambda'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '#'
@@ -110,13 +110,13 @@ layers:
   - AltGr+8
   - Sft+8
   - AltGr+7
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '|'
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - Sft+|
   - AltGr+0
   - Sft+9
   - AltGr+9
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&lambda'
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:volume-off$$
   - {t: '$$mdi:transfer$$', type: trans}
