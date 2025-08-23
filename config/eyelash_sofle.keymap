@@ -14,30 +14,9 @@
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
-&msc {
-    acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
-    delay-ms = <0>;                   // 0
-};
-
-&mmv {
-    time-to-max-speed-ms = <500>;
-    acceleration-exponent = <1>;
-    trigger-period-ms = <16>;
-};
+&mt { tapping-term-ms = <100>; };
 
 / {
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <100>;
-    };
-
-    behaviors {
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -90,7 +69,7 @@
 &kp C_MUTE      &trans            &trans    &trans          &trans     &trans           &mkp LCLK        &trans           &trans           &kp KP_NUMBER_0  &trans           &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&none>;
         };
 
         layer3 {
@@ -103,7 +82,7 @@
 &trans          &trans        &trans        &trans        &tog 1        &tog 5          &mkp LCLK        &trans           &trans             &trans           &trans  &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&none>;
         };
 
         arw {
