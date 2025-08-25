@@ -144,7 +144,7 @@ layers:
   - '*'
   - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:backspace$$', type: backspace}
-  - {t: '$$mdi:backspace$$', s: '&mmv DELETE'}
+  - {t: '$$mdi:backspace$$', s: '$$mdi:backspace-reverse-outline$$'}
   - $$mdi:pan-down$$
   - HOME
   - {t: '$$mdi:arrow-up-bold$$', s: '$$mdi:menu-up$$'}
@@ -183,7 +183,7 @@ layers:
   - {t: '3', s: '#'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: MUTE, h: Ctl+Alt+Gui+D}
+  - {t: MUTE, h: 'Alt+Gui+$$mdi:keyboard-space$$'}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
