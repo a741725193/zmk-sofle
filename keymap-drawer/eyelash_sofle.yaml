@@ -171,7 +171,7 @@ layers:
   - +
   - {t: '''', s: '"'}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&mcr_afsd'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -183,7 +183,7 @@ layers:
   - {t: '3', s: '#'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: '$$mdi:volume-off$$', h: 'Alt+Gui+$$mdi:keyboard-space$$'}
+  - {t: 'Alt+Gui+$$mdi:keyboard-space$$', h: '$$mdi:volume-off$$'}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
