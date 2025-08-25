@@ -115,7 +115,7 @@
 &mm_bksp    &msc SCRL_DOWN&kp HOME	&mm_mup		&kp END		&mkp LCLK			&mmv MOVE_DOWN				&none		&kp N7		&kp N8		&kp N9		&kp MINUS	&kp EQUAL
 &kp LSHFT	&msc SCRL_UP&mm_mleft	&mm_mdown	&mm_mright	&mkp RCLK			&mmv MOVE_LEFT				&none		&kp N4		&kp N5		&kp N6		&kp PLUS	&kp APOS
 &trans		&none		&none		&none		&none		&mkp MCLK			&mmv MOVE_RIGHT				&none		&kp N1		&kp N2		&kp N3		&kp ENTER	&kp ENTER
-&mt LA(LG(SPACE)) MUTE	&trans		&trans		&trans		&kp ENTER	&trans	&mkp LCLK		&trans		&trans		&trans		&kp N0		&kp DOT
+&mt LA(LG(SPACE)) C_MUTE&trans		&trans		&trans		&kp ENTER	&trans	&mkp LCLK		&trans		&trans		&trans		&kp N0		&kp DOT
 				>; sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;			display-name = "2_Left";
         };
         layer_3 { bindings = <
