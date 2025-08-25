@@ -183,7 +183,7 @@ layers:
   - {t: '3', s: '#'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: MUTE, h: 'Alt+Gui+$$mdi:keyboard-space$$'}
+  - {t: '$$mdi:volume-off$$', h: 'Alt+Gui+$$mdi:keyboard-space$$'}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
