@@ -62,7 +62,6 @@
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "MAIN";
         };
 
         SYMBOL {
@@ -87,6 +86,7 @@
 &none      &none         &none           &none         &none         &none           &mkp LCLK        &none  &none  &none       &none      &none
             >;
 
+            display-name = "SYSTEM";
             sensor-bindings = <&scroll_encoder>;
         };
     };
