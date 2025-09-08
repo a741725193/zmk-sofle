@@ -5,9 +5,6 @@ manifest:
     - name: infely
       url-base: https://github.com/infely
   projects:
-    - name: eyelash_sofle
-      url: https://github.com/a741725193/zmk-sofle
-      revision: main
     - name: zmk
       remote: zmkfirmware
       revision: main

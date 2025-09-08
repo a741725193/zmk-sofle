@@ -1,7 +1,7 @@
 file_format: "1"
 id: eyelash_sofle
 name: Eyelash Sofle
-url: https://github.com/a741725193/zmk-sofle
+url: https://github.com/Jonybat/zmk-sofle
 type: board
 arch: arm
 features:
