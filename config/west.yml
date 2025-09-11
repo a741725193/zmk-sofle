@@ -21,3 +21,5 @@ manifest:
       import: app/west.yml
   self:
     path: boards
+
+    
