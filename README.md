@@ -1,4 +1,4 @@
-e- [中文](README.md)
+e-[English](README_EN.md)
 - [English](README_EN.md)
 - [Chinese](README_CN.md)
 
