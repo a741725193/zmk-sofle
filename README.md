@@ -18,5 +18,5 @@ e- [中文](README.md)
 
 # Sofle键位图
 
-<img src="keymap-drawer/eyalash_sofle.svg" >
+<img src="keymap-drawer/eyelash_sofle.svg" >
 
