@@ -1,14 +1,6 @@
 ---
 include:
- # - board: eyelash_sofle_left
-#    shield: nice_view
+  - board: eyelash_sofle_left
+    shield: nice_view_custom
   - board: eyelash_sofle_right
-#   shield: nice_view_custom
-    shield: nice_view
-  - board: eyelash_sofle_left
-    shield: nice_view
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
-    artifact-name: eyelash_sofle_studio_left
-  - board: eyelash_sofle_left
-    shield: settings_reset
+    shield: nice_view_custom
