@@ -1,5 +1,6 @@
 e- [中文](README.md)
 - [English](README_EN.md)
+- [Chinese](README_CN.md)
 
 # 更新列表
 - 2025/3/30 增加睡眠进入时间1小时  增加防抖时间 优化睡眠后功耗 
