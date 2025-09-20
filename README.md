@@ -1,4 +1,4 @@
-- [中文](README.md)
+e- [中文](README.md)
 - [English](README_EN.md)
 
 # 更新列表
@@ -18,5 +18,5 @@
 
 # Sofle键位图
 
-<img src="keymap-drawer/sofle.svg" >
+<img src="keymap-drawer/eyalash_sofle.svg" >
 
