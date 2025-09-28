@@ -75,11 +75,11 @@
 
         LOWER {
             bindings = <
-&kp ESC     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &bt BT_CLR  &trans  &trans  &trans  &trans    &trans    &trans
-&trans      &kp INS       &kp PSCRN     &trans        &trans        &trans             &trans      &trans  &trans  &trans  &trans    &trans    &kp DELETE
-&trans      &trans        &trans        &trans        &trans        &trans             &trans      &trans  &trans  &trans  &trans    &trans    &trans
-&trans      &trans        &trans        &trans        &trans        &trans             &trans      &trans  &trans  &trans  &trans    &trans    &trans
-&mkp LCLK   &trans        &trans        &trans        &trans        &trans             &trans      &trans  &trans  &kp C_PREV  &kp C_NEXT    &kp C_PP
+&kp ESC     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &trans   &bt BT_CLR  &trans  &trans  &trans    &trans    &trans
+&trans      &kp INS       &kp PSCRN     &trans        &trans        &trans             &trans   &trans      &trans  &trans  &trans    &trans    &kp DELETE
+&trans      &trans        &trans        &trans        &trans        &trans             &trans   &trans      &trans  &trans  &trans    &trans    &trans
+&trans      &trans        &trans        &trans        &trans        &trans             &trans   &trans      &trans  &trans  &trans    &trans    &trans
+&mkp LCLK   &trans        &trans        &trans        &trans        &trans             &trans   &trans      &trans  &kp C_PREV  &kp C_NEXT    &kp C_PP
             >;
 
             display-name = "LOWER";
