@@ -1,9 +1,4 @@
-# Sofle
 
-- [Chinese](README.md)
-- [English](README_EN.md)
-
-## Update List
 
 - 2024/12/21
   1. Added support for zmk-studio (just refresh the left hand to use).
@@ -18,10 +13,5 @@
 > If your  sofle was updated before 2025/8/22, please update to the latest firmware.
 >
 
-## Contact Me
-
-For 3D printed model files or any issues and malfunctions with the keyboard, please contact [380465425@qq.com](mailto:380465425@qq.com)
-
-## Sofle Keymap
 
 ![Sofle键位图](keymap-drawer/eyelash_sofle.svg)
