@@ -78,7 +78,7 @@ layers:
   - F8
   - F9
   - F10
-  - SLEEP
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - F11
   - F12
@@ -122,7 +122,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:backspace$$', type: backspace}
+  - SLEEP
   - {t: '2', type: held}
   - $$mdi:mouse-left-click-outline$$
   - {t: '2', type: held alternate}
