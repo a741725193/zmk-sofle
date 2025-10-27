@@ -13,7 +13,7 @@ layers:
   - {t: '8', s: '*'}
   - {t: '9', s: (}
   - {t: '0', s: )}
-  - SLEEP
+  - '&lock'
   - $$mdi:keyboard-tab$$
   - Q
   - W
@@ -78,7 +78,7 @@ layers:
   - F8
   - F9
   - F10
-  - {t: '$$mdi:transfer$$', type: trans}
+  - '&lock_and_sleep'
   - {t: '$$mdi:transfer$$', type: trans}
   - F11
   - F12
