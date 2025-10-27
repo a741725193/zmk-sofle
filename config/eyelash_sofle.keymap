@@ -39,7 +39,7 @@
     };
 
     macros {
-        lock: new_macro {
+        lock_screen: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
