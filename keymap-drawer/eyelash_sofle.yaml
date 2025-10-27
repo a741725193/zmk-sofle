@@ -78,7 +78,7 @@ layers:
   - F8
   - F9
   - F10
-  - '&lock_and_sleep'
+  - SLEEP
   - {t: '$$mdi:transfer$$', type: trans}
   - F11
   - F12
