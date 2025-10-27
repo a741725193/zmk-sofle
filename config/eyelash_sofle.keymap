@@ -56,26 +56,6 @@
 
             label = "NEW_MACRO";
         };
-
-        lock_and_sleep: lock_and_sleep {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_press>,
-                <&kp RIGHT_COMMAND>,
-                <&macro_press>,
-                <&kp Q>,
-                <&macro_release>,
-                <&kp RIGHT_COMMAND>,
-                <&macro_release>,
-                <&kp LCTRL>,
-                <&macro_tap_time 1000>,
-                <&kp C_SLEEP>;
-
-            label = "LOCK_AND_SLEEP";
-        };
     };
 
     keymap {
@@ -96,7 +76,7 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7                    &kp F8      &kp F9     &kp F10           &lock_and_sleep
+&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7                    &kp F8      &kp F9     &kp F10           &kp K_SLEEP
 &trans      &kp F11          &kp F12         &trans           &trans           &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END                   &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
 &trans      &trans           &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT                  &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD           &kp INSERT  &trans     &trans            &trans
