@@ -71,7 +71,7 @@
                 <&kp RIGHT_COMMAND>,
                 <&macro_release>,
                 <&kp LCTRL>,
-                <&macro_tap_time 150>,
+                <&macro_tap_time 1000>,
                 <&kp C_SLEEP>;
 
             label = "LOCK_AND_SLEEP";
