@@ -106,7 +106,7 @@ layers:
   - {t: '[', s: '{'}
   - {t: \, s: '|'}
   - {t: '$$mdi:transfer$$', type: trans}
-  - <
+  - NUBS
   - RGB ON
   - RGB EFF
   - RGB EFR
