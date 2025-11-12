@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: eyelash_sofle}
 layers:
   Frank:
-  - {t: '`', h: '$$mdi:keyboard-esc$$', s: '~'}
+  - {t: '`', s: '~'}
   - {t: '1', s: '!'}
   - {t: '2', s: '@'}
   - {t: '3', s: '#'}
@@ -131,7 +131,7 @@ layers:
   - $$mdi:power-standby$$
   - Ins
   2_Left:
-  - {t: '`', s: '~'}
+  - $$mdi:keyboard-esc$$
   - F11
   - F12
   - F13
@@ -140,8 +140,8 @@ layers:
   - {t: '$$mdi:menu-up$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: /, s: '?'}
-  - '*'
+  - KP SLASH
+  - KP ASTERISK
   - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:backspace$$', type: backspace}
   - {t: '$$mdi:backspace$$', s: '$$mdi:backspace-reverse-outline$$'}
@@ -152,11 +152,11 @@ layers:
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '7', s: '&'}
-  - {t: '8', s: '*'}
-  - {t: '9', s: (}
-  - {t: '-', s: _}
-  - {t: '=', s: +}
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP MINUS
+  - KP EQUAL
   - $$mdi:apple-keyboard-shift$$
   - $$mdi:pan-up$$
   - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:menu-left$$'}
@@ -165,11 +165,11 @@ layers:
   - $$mdi:mouse-right-click-outline$$
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '4', s: $}
-  - {t: '5', s: '%'}
-  - {t: '6', s: ^}
-  - +
-  - {t: '''', s: '"'}
+  - KP 4
+  - KP 5
+  - KP 6
+  - KP PLUS
+  - KP NUMLOCK
   - {t: '$$mdi:transfer$$', type: trans}
   - '&mcr_afsd'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -178,10 +178,10 @@ layers:
   - $$mdi:mouse-scroll-wheel$$
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '1', s: '!'}
-  - {t: '2', s: '@'}
-  - {t: '3', s: '#'}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP ENTER
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: 'Alt+Gui+$$mdi:keyboard-space$$', h: '$$mdi:volume-off$$'}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -193,8 +193,8 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '0', s: )}
-  - {t: ., s: '>'}
+  - KP 0
+  - KP DOT
   3_Both:
   - {t: '$$mdi:backup-restore$$', type: bootloader}
   - {h: '1', s: '$$mdi:bluetooth-connect$$'}
