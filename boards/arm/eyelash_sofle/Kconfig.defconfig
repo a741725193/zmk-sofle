@@ -50,7 +50,7 @@ endif # USB
 if ZMK_DISPLAY
 
 config I2C
-    default y
+   default y
 
 config SSD1306
     default y
@@ -64,7 +64,7 @@ endif
 if SSD1306
 
 config LV_Z_VDB_SIZE
-    default 64
+   default 64
 
 config LV_DPI_DEF
     default 148
