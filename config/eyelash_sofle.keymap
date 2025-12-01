@@ -63,11 +63,11 @@
 
         layer0 {
             bindings = <
-&kp CAPS    &kp N1     &kp N2        &kp N3        &kp N4     &kp N5    &kp UP_ARROW     &kp N6  &kp N7     &kp N8             &kp N9         &kp N0      &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R      &kp T     &kp DOWN_ARROW   &kp Y   &kp U      &kp I              &kp O          &kp P       &kp BSLH
-&kp ESC     &kp A      &kp S         &kp D         &kp F      &kp G     &kp LEFT_ARROW   &kp H   &kp J      &kp K              &kp L          &kp SEMI    &kp APOS
-&kp LSHFT   &kp Z      &kp X         &kp C         &kp V      &kp B     &kp RIGHT_ARROW  &kp N   &kp M      &kp COMMA          &kp DOT        &kp FSLH    &kp RIGHT_SHIFT
-&kp C_MUTE  &kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &kp SPACE  &mo 1     &kp ENTER        &mo 1   &kp ENTER  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp DELETE
+&kp CAPS    &kp N1     &kp N2    &kp N3    &kp N4     &kp N5    &kp UP_ARROW     &kp N6  &kp N7     &kp N8     &kp N9    &kp N0      &kp BACKSPACE
+&kp TAB     &kp Q      &kp W     &kp E     &kp R      &kp T     &kp DOWN_ARROW   &kp Y   &kp U      &kp I      &kp O     &kp P       &kp BSLH
+&kp ESC     &kp A      &kp S     &kp D     &kp F      &kp G     &kp LEFT_ARROW   &kp H   &kp J      &kp K      &kp L     &kp SEMI    &kp APOS
+&kp LSHFT   &kp Z      &kp X     &kp C     &kp V      &kp B     &kp RIGHT_ARROW  &kp N   &kp M      &kp COMMA  &kp DOT   &kp FSLH    &kp RIGHT_SHIFT
+&kp C_MUTE  &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &mo 1     &kp ENTER        &mo 1   &kp ENTER  &kp RALT   &kp RGUI  &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -77,7 +77,7 @@
         layer_1 {
             bindings = <
 &kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7                    &kp F8      &kp F9     &kp F10           &trans
-&trans      &kp F11          &kp F12         &trans           &trans           &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END                   &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
+&trans      &kp F11          &kp F12         &trans           &trans           &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp HOME                  &kp UP      &kp END    &kp MINUS         &kp EQUAL
 &trans      &trans           &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT                  &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD           &kp INSERT  &trans     &trans            &trans
 &kp C_MUTE  &trans           &trans          &trans           &kp C_SLEEP      &mo 2              &mkp LCLK        &mo 2            &kp LA(NON_US_BACKSLASH)  &trans      &trans     &trans
