@@ -3,12 +3,20 @@ include:
  # - board: eyelash_sofle_left
 #    shield: nice_view
   - board: eyelash_sofle_right
-#   shield: nice_view_custom
     shield: nice_view
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
   - board: eyelash_sofle_left
     shield: nice_view
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: eyelash_sofle_studio_left
   - board: nice_nano_v2
     shield: settings_reset
+  - board: nice_nano_v2
+    shield: eyelash_sofle_dongle
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_BACKLIGHT=n -DCONFIG_ZMK_RGB_UNDERGLOW=n
+  - board: nice_nano_v2
+    shield: eyelash_sofle_dongle
+    snippet: zmk-usb-logging
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_BACKLIGHT=n -DCONFIG_ZMK_RGB_UNDERGLOW=n
+    artifact-name: dongle-debug
