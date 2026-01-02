@@ -1,14 +1,17 @@
 ---
 include:
- # - board: eyelash_sofle_left
-#    shield: nice_view
-  - board: eyelash_sofle_right
-#   shield: nice_view_custom
-    shield: nice_view
+  # ZMK Studio 対応（左）
   - board: eyelash_sofle_left
-    shield: nice_view
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
     artifact-name: eyelash_sofle_studio_left
+
+  # ZMK Studio 対応（右 / USB Central）
+  - board: eyelash_sofle_right
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+    artifact-name: eyelash_sofle_studio_right
+
+  # settings reset（Nice!Nano v2）
   - board: nice_nano_v2
     shield: settings_reset
