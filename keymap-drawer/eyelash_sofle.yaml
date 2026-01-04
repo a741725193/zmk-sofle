@@ -5,12 +5,12 @@ layers:
   - {t: '1', h: 'Alt+$$mdi:apple-keyboard-command$$'}
   - {t: '2', h: 'Sft+Alt+$$mdi:apple-keyboard-command$$'}
   - {t: '3', h: 'Sft+$$mdi:apple-keyboard-command$$', s: '#'}
-  - {t: KP 4, h: '$$mdi:apple-keyboard-command$$'}
-  - {t: KP 5, h: '$$mdi:apple-keyboard-option$$'}
+  - {t: '4', h: '$$mdi:apple-keyboard-command$$'}
+  - {t: '5', h: '$$mdi:apple-keyboard-option$$'}
   - $$mdi:arrow-up-bold$$
-  - {t: KP 6, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: KP 7, h: '$$mdi:apple-keyboard-command$$'}
-  - {t: KP 8, h: 'Sft+$$mdi:apple-keyboard-command$$'}
+  - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
+  - {t: '7', h: '$$mdi:apple-keyboard-command$$'}
+  - {t: '8', h: 'Sft+$$mdi:apple-keyboard-command$$'}
   - {t: '9', h: 'Sft+AltGr+$$mdi:apple-keyboard-command$$', s: (}
   - {t: '0', h: 'AltGr+$$mdi:apple-keyboard-command$$', s: )}
   - {t: '-', h: layer3, s: _}
