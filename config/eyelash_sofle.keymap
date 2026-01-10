@@ -78,7 +78,6 @@
 &kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "LAYER0";
         };
 
@@ -92,7 +91,6 @@
             >;
 
             display-name = "layer1";
-            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_2 {
@@ -105,7 +103,6 @@
             >;
 
             display-name = "layer2";
-            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_3 {
@@ -118,7 +115,6 @@
             >;
 
             display-name = "layer3";
-            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_4 {
@@ -131,9 +127,16 @@
             >;
 
             display-name = "layer4";
-            sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_5 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
         };
     };
 };
-
-
