@@ -9,7 +9,7 @@ config ZMK_KEYBOARD_NAME
     default "Eyelash Sofle"
 
 config ZMK_SPLIT_ROLE_CENTRAL
-    default y
+    default n
 
 endif # BOARD_EYELASH_SOFLE_LEFT
 
