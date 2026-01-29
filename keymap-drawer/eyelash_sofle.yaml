@@ -41,9 +41,9 @@ layers:
   - Z
   - {t: '~', h: '3'}
   - $$mdi:keyboard-esc$$
-  - {t: '1', s: '!'}
-  - {t: '2', s: '@'}
-  - {t: '3', s: '#'}
+  - Ctl+Sft+C
+  - Ctl+Sft+V
+  - {t: Alt+\, s: Alt+|}
   - {t: '4', s: $}
   - {t: '5', s: '%'}
   - $$mdi:arrow-right-bold$$
@@ -63,7 +63,7 @@ layers:
   - {t: '$$mdi:keyboard-return$$', h: '$$mdi:apple-keyboard-control$$'}
   - {t: '$$mdi:keyboard-space$$', h: RSFT}
   - {t: '$$mdi:keyboard-return$$', h: '$$mdi:apple-keyboard-control$$'}
-  - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+  - {t: Alt+\, h: '$$mdi:gesture-tap-hold$$', s: Alt+|}
   - RESET
   layer1:
   - {t: '$$mdi:transfer$$', type: trans}
