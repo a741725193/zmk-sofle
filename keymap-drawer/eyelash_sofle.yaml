@@ -40,7 +40,7 @@ layers:
   - L
   - {t: ;, s: ':'}
   - {t: '''', s: '"'}
-  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-command$$
   - Z
   - X
   - C
@@ -54,7 +54,7 @@ layers:
   - {t: /, s: '?'}
   - {t: ']', s: '}'}
   - $$mdi:apple-keyboard-caps$$
-  - LGUI
+  - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-option$$
   - $$mdi:keyboard-space$$
   - layer1
