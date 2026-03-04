@@ -80,10 +80,10 @@ layers:
   - F10
   - F11
   - {t: '$$mdi:transfer$$', type: trans}
-  - HOME
+  - {t: HOME, h: '$$mdi:backspace$$'}
   - $$mdi:arrow-up-bold$$
-  - END
-  - PgUp
+  - {t: END, h: '$$mdi:backspace-reverse-outline$$'}
+  - {t: PgUp, h: Ctl+HOME}
   - {t: (, h: )}
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - {t: '-', s: _}
@@ -96,7 +96,7 @@ layers:
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
-  - PgDn
+  - {t: PgDn, h: Ctl+END}
   - {t: '[', h: ']', s: '{'}
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - +
@@ -105,7 +105,7 @@ layers:
   - {t: '6', s: ^}
   - PG DN
   - {t: '$$mdi:transfer$$', type: trans}
-  - RETURN
+  - $$mdi:apple-keyboard-control$$
   - Ctl+Z
   - Ctl+X
   - Ctl+C
