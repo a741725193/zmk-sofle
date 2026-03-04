@@ -79,10 +79,10 @@
 
         layer_2 {
             bindings = <
-&kp GRAVE  &trans        &trans                          &trans                      &trans                      &trans                                    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp MINUS     &mt AMPS PIPE                   &kp MINUS                   &mt GREATER_THAN LESS_THAN  &mt RIGHT_PARENTHESIS LEFT_PARENTHESIS    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp PLUS      &mt SINGLE_QUOTE DOUBLE_QUOTES  &mt EXCLAMATION UNDERSCORE  &kp EQUAL                   &mt RIGHT_BRACKET LEFT_BRACKET            &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp ASTERISK  &mt PERCENT QUESTION            &mt BACKSLASH SLASH         &mt ASTERISK DOT            &mt RIGHT_BRACE LEFT_BRACE                &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &kp MINUS     &kp AT_SIGN                     &kp POUND                   &kp DOLLAR                  &kp PERCENT                               &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp PLUS      &mt AMPS PIPE                   &mt POUND MINUS             &mt GREATER_THAN LESS_THAN  &mt RIGHT_PARENTHESIS LEFT_PARENTHESIS    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp ASTERISK  &mt SINGLE_QUOTE DOUBLE_QUOTES  &mt EXCLAMATION UNDERSCORE  &mt QUESTION EQUAL          &mt RIGHT_BRACKET LEFT_BRACKET            &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp PERCENT   &mt TILDE DOLLAR                &mt BACKSLASH SLASH         &mt ASTERISK DOT            &mt RIGHT_BRACE LEFT_BRACE                &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &trans        &trans                          &trans                      &trans                      &mt ENTER TAB                             &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
