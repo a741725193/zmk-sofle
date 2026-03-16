@@ -1,5 +1,9 @@
-build/
-zmk/
-modules/
-tools/
-.west/
+/build/
+/zmk/
+/modules/
+/tools/
+/.west/
+!/zephyr/module.yml
+/zephyr/
+/mario-peripheral-animation/
+/optional/
