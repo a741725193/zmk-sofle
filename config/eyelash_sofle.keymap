@@ -77,6 +77,13 @@
             bindings = <&mmv MOVE_DOWN &mmv MOVE_RIGHT>;
             label = "DOWNRIGHT";
         };
+
+        new_macrodsa: new_macrodsa {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp C &kp D &kp C &kp D &kp C &kp A &kp A &kp E &kp E &kp B &kp B &kp D &kp A &kp E &kp B &kp D &kp F &kp D &kp C &kp E &kp C &kp A &kp E &kp D &kp D &kp C &kp D &kp E &kp E &kp D &kp D &kp D &kp D &kp C &kp E &kp C &kp D &kp D &kp C &kp D &kp C &kp C &kp C &kp D &kp C &kp C &kp D &kp E &kp C &kp B &kp D>;
+            label = "NEW_MACRODSA";
+        };
     };
 
     keymap {
