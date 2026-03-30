@@ -143,11 +143,11 @@
 
         NumPad {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &to 0   &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans     &trans      &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9   &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6   &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3   &trans         &trans
+&trans  &trans  &trans  &trans  &to 0   &trans    &trans  &trans  &trans     &kp KP_N0  &kp KP_DOT  &kp BACKSPACE
             >;
         };
 
