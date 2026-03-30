@@ -5,9 +5,9 @@
 //           в обычной прошивке не занимают RAM,
 //           в Studio-сборке становятся доступными
 // ============================================================
-
 // --- Настройки скорости мыши ---
 // Увеличенные значения относительно стандартных (600 и 10)
+
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
 
@@ -21,10 +21,13 @@
 #include <dt-bindings/zmk/rgb.h>
 
 // --- Масштабирование движения мыши и скролла ---
+
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 // --- Физика скролла: быстрый старт, без задержки ---
+
 &msc {
     acceleration-exponent = <1>;
     time-to-max-speed-ms = <100>;
@@ -32,6 +35,7 @@
 };
 
 // --- Физика движения курсора: плавный разгон за 500мс ---
+
 &mmv {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
@@ -39,15 +43,18 @@
 };
 
 // --- Soft Off: нужно держать комбо 2 секунды ---
+
 &soft_off { hold-time-ms = <2000>; };
 
 / {
     // --- Поведение энкодера: скролл вверх/вниз ---
     // Используется на слоях 1 и 2 вместо регулировки громкости
+
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
     };
 
@@ -71,6 +78,7 @@
 
         // Комбо Q+S+Z (позиции 14, 28, 40) = Soft Off
         // Нужно держать 2 секунды (настроено выше в &soft_off)
+
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
@@ -80,6 +88,7 @@
     macros {
         // Макрос: одновременно Shift + средняя кнопка мыши
         // Можно назначить на любую клавишу через ZMK Studio
+
         SHIFT_MCLK: SHIFT_MCLK {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -91,6 +100,7 @@
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LEFT_SHIFT &mkp MB3>;
+
             label = "SHIFT_MCLK";
         };
     };
@@ -104,42 +114,44 @@
         // mo 1 = левый большой палец = временно слой 1
         // mo 2 = правый большой палец = временно слой 2
         // ====================================================
-        layer0 {
+
+        Main {
             bindings = <
-&kp ESC     &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R   &kp T        &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp BSLH
-&kp CAPS    &kp A      &kp S         &kp D         &kp F   &kp G        &kp LEFT_ARROW   &kp H      &kp J      &kp K      &kp L            &kp SEMI    &kp APOS
-&kp LSHFT   &kp Z      &kp X         &kp C         &kp V   &kp B        &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp FSLH    &kp ENTER
-&kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
+&kp ESC           &kp N1     &kp N2        &kp N3        &kp N4  &kp N5    &kp UP_ARROW     &kp N6     &kp N7     &kp N8         &kp N9         &kp N0             &kp NON_US_BACKSLASH
+&kp TAB           &kp Q      &kp W         &kp E         &kp R   &kp T     &kp DOWN_ARROW   &kp Y      &kp U      &kp I          &kp O          &kp P              &kp SLASH
+&kp LEFT_SHIFT    &kp A      &kp S         &kp D         &kp F   &kp G     &kp LEFT_ARROW   &kp H      &kp J      &kp K          &kp L          &kp SEMI           &kp APOS
+&kp LEFT_CONTROL  &kp Z      &kp X         &kp C         &kp V   &kp B     &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA      &kp DOT        &kp LEFT_BRACKET   &kp RIGHT_BRACKET
+&kp C_MUTE        &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &to 1   &to 2     &kp ENTER        &kp SPACE  &kp ENTER  &kp BACKSPACE  &kp RIGHT_GUI  &kp K_APPLICATION
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "LAYER0";
         };
 
-        // ====================================================
-        // СЛОЙ 1 — Навигация, мышь, F-клавиши, RGB
-        // Активируется удержанием mo 1 (левый большой палец)
-        // &trans = "прозрачная" клавиша, берёт значение со слоя 0
-        // ====================================================
-        layer_1 {
+        Navigation {
             bindings = <
 &kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
-&trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
-&trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&trans      &kp GRAVE        &mkp LCLK       &kp UP           &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
+&trans      &kp TILDE        &kp LEFT        &kp DOWN         &kp RIGHT        &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
+&kp C_MUTE  &trans           &trans          &trans           &trans           &to 0              &mkp LCLK        &trans           &trans           &trans      &trans     &trans
             >;
+
             display-name = "layer1";
             sensor-bindings = <&scroll_encoder>;
         };
 
-        // ====================================================
-        // СЛОЙ 2 — Bluetooth, вывод, системные функции
-        // Активируется удержанием mo 2 (правый большой палец)
-        // BT_SEL 0-4 = выбор одного из 5 BT профилей
-        // OUT_USB / OUT_BLE = куда идут нажатия клавиш
-        // ====================================================
-        layer_2 {
+        NumPad {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &to 0   &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        Adjust {
             bindings = <
 &kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &trans
 &trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
@@ -147,67 +159,9 @@
 &trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
 &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
             >;
+
             display-name = "layer2";
             sensor-bindings = <&scroll_encoder>;
         };
-
-        // ====================================================
-        // СЛОЙ 3 — Пустой, редактируй в ZMK Studio
-        // Все &trans = клавиши ведут себя как на слое 0
-        // ====================================================
-        layer_3 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-            display-name = "layer3";
-            sensor-bindings = <&scroll_encoder>;
-        };
-
-        // ====================================================
-        // СЛОЙ 4 — Пустой, редактируй в ZMK Studio
-        // ====================================================
-        layer_4 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-            display-name = "layer4";
-            sensor-bindings = <&scroll_encoder>;
-        };
-
-        // ====================================================
-        // СЛОИ 5-8 — Зарезервированы для ZMK Studio
-        //
-        // status = "reserved" означает:
-        // - В обычной прошивке: игнорируются, не занимают RAM
-        // - В Studio-сборке: становятся доступны для редактирования
-        //
-        // Чтобы активировать слой из Studio — нужно добавить
-        // кнопку &mo 5 (или 6,7,8) на любой рабочий слой
-        // через интерфейс ZMK Studio
-        // ====================================================
-        layer_5 {
-            status = "reserved";
-        };
-
-        layer_6 {
-            status = "reserved";
-        };
-
-        layer_7 {
-            status = "reserved";
-        };
-
-        layer_8 {
-            status = "reserved";
-        };
-
     };
 };
