@@ -143,11 +143,11 @@
 
         NumPad {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_NUM  &kp ASTERISK  &kp SLASH   &kp KP_PLUS    &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_N7   &kp KP_N8     &kp KP_N9   &kp KP_MINUS   &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_N4   &kp KP_N5     &kp KP_N6   &kp KP_EQUAL   &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp KP_N1   &kp KP_N2     &kp KP_N3   &kp KP_ENTER   &trans
-&trans  &trans  &trans  &trans  &to 0   &trans    &trans  &trans  &trans      &kp KP_N0     &kp KP_DOT  &kp BACKSPACE
+&trans  &kp F1   &kp F2           &kp F3   &kp F4   &kp F5     &trans  &trans   &kp KP_NUM  &kp ASTERISK   &kp SLASH  &kp KP_PLUS   &kp HOME
+&trans  &kp F6   &kp F7           &kp F8   &kp F9   &kp F10    &trans  &trans   &kp KP_N7   &kp KP_N8      &kp KP_N9  &kp KP_MINUS  &kp PG_UP
+&trans  &kp F11  &kp F12          &kp F13  &kp F14  &kp F15    &trans  &trans   &kp KP_N4   &kp KP_N5      &kp KP_N6  &kp KP_EQUAL  &kp PG_DN
+&trans  &kp F16  &kp F17          &kp F18  &kp F19  &kp F20    &trans  &kp DEL  &kp KP_N1   &kp KP_N2      &kp KP_N3  &kp KP_ENTER  &kp END
+&trans  &trans   &kp PRINTSCREEN  &trans   &to 0    &trans     &trans  &trans   &trans      &kp BACKSPACE  &kp KP_N0  &kp KP_DOT
             >;
         };
 
