@@ -79,9 +79,9 @@
             bindings = <
 &bt BT_CLR_ALL   &trans          &trans          &trans           &trans      &trans    &mmv MOVE_UP     &kp PLUS         &kp N7      &kp N8      &kp N9    &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &bt BT_CLR       &trans          &mkp LCLK       &mkp MCLK        &mkp RCLK   &kp PG_UP &mmv MOVE_DOWN   &kp MINUS        &kp N4      &kp N5      &kp N6       &kp LBRC          &kp RBRC
-&bt BT_SEL 0     &trans          &trans          &trans           &trans      &kp PG_DN &mmv MOVE_LEFT   &kp KP_MULTIPLY  &kp N1      &kp N2      &kp N3       &kp KP_LPAR       &kp KP_RPAR
-&bt BT_SEL 1     &trans          &trans          &trans           &trans      &trans    &mmv MOVE_RIGHT  &kp KP_DIVIDE    &kp N0      &kp N0      &kp DOT      &trans         &trans
-&bt BT_SEL 2     &trans          &trans          &trans           &trans      &trans    &mkp LCLK        &trans           &trans      &kp EQUAL   &kp EQUAL    &trans
+&bt BT_SEL 1     &trans          &trans          &trans           &trans      &kp PG_DN &mmv MOVE_LEFT   &kp KP_MULTIPLY  &kp N1      &kp N2      &kp N3       &kp KP_LPAR       &kp KP_RPAR
+&bt BT_SEL 2     &trans          &trans          &trans           &trans      &trans    &mmv MOVE_RIGHT  &kp KP_DIVIDE    &kp N0      &kp N0      &kp DOT      &trans         &trans
+&bt BT_SEL 0     &trans          &trans          &trans           &trans      &trans    &mkp LCLK        &trans           &trans      &kp EQUAL   &kp EQUAL    &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
