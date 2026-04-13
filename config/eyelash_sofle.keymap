@@ -94,6 +94,12 @@
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
         };
+
+        NP_L {
+            bindings = <&tog 2>;
+            key-positions = <57 56>;
+            layers = <1 0 2 3>;
+        };
     };
 
     macros {
