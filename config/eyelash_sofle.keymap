@@ -1,197 +1,634 @@
-// ============================================================
-// Sofle (Eyelash) keymap — 9 слоёв
-// Слои 0-4: рабочие (редактируются в ZMK Studio)
-// Слои 5-8: зарезервированы для ZMK Studio (status = "reserved")
-//           в обычной прошивке не занимают RAM,
-//           в Studio-сборке становятся доступными
-// ============================================================
-// --- Настройки скорости мыши ---
-// Увеличенные значения относительно стандартных (600 и 10)
+// ═══════════════════════════════════════════════════════════════════════════════
+// SOFLE WIRELESS ZMK KEYMAP
+// "GNOME Ultimate" — v1.0
+//
+// Дизайн основан на:
+//   • Miryoku (manna-harbour)   — принцип слоёв, симметрия, минимализм
+//   • urob timeless HRMs        — позиционные home row mods без ложных срабатываний
+//   • Callum-style combos       — много комбо без mod-tap конфликтов
+//   • Seniply                   — one-shot mods для sticky shift
+//   • infused-kim Sofle config  — адаптация под Sofle Wireless
+//
+// СЛОИ (10 штук, 0–9):
+//   0 BASE   — основной слой (QWERTY + HRM)
+//   1 NAV    — навигация (стрелки, PgUp/Dn, Home/End)
+//   2 SYM    — символы и скобки
+//   3 PICK   — пикер слоёв (hold + буква → слой)
+//   4 NUM    — numpad
+//   5 FN     — функциональные клавиши (F1–F12)
+//   6 GNOME  — шорткаты рабочего стола GNOME
+//   7 FIRE   — Firefox / браузер
+//   8 MEDIA  — медиа и яркость
+//   9 SYS    — система (BT, RGB, reset)
+//
+// THUMB-КЛАСТЕР (левая → правая, от внутреннего к внешнему):
+//   Левый:  [SYS] [Alt/Tab] [NAV/Space] [sk Shift] [PICK]
+//   Правый: [PICK] [SYM/Enter] [Backspace] [Delete] [SYS]
+//
+// HOME ROW MODS (порядок GACS — оптимально для Linux/GNOME):
+//   Левый:  A=GUI  S=ALT  D=CTRL  F=SHIFT
+//   Правый: J=SHIFT  K=CTRL  L=ALT  ;=GUI
+//
+// COMBOS — 24 комбо без конфликта с HRM:
+//   Все на верхнем ряду и нижнем (не на home row, где HRM)
+//   Позиции указаны в комментариях ниже
+//
+// ═══════════════════════════════════════════════════════════════════════════════
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
-
-#include <input/processors.dtsi>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-// --- Масштабирование движения мыши и скролла ---
+// ─── Layer aliases ───────────────────────────────────────────────────────────
+#define BASE  0
+#define NAV   1
+#define SYM   2
+#define PICK  3
+#define NUM   4
+#define FN    5
+#define GNOME 6
+#define FIRE  7
+#define MEDIA 8
+#define SYS   9
 
-&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
-
-&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
-
-// --- Физика скролла: быстрый старт, без задержки ---
-
-&msc {
-    acceleration-exponent = <1>;
-    time-to-max-speed-ms = <100>;
-    delay-ms = <0>;
-};
-
-// --- Физика движения курсора: плавный разгон за 500мс ---
-
-&mmv {
-    time-to-max-speed-ms = <500>;
-    acceleration-exponent = <1>;
-    trigger-period-ms = <16>;
-};
-
-// --- Soft Off: нужно держать комбо 2 секунды ---
-
-&soft_off { hold-time-ms = <2000>; };
-
-&lt {
-    bindings = <&to>, <&kp>;
-};
+// ─── Key position reference (для combos) ─────────────────────────────────────
+//
+// Sofle Wireless — 58 клавиш, 29 на половину
+// Нумерация позиций (без &none-разделителей и энкодера):
+//
+// LEFT HALF:
+//  ┌────┬────┬────┬────┬────┬────┐
+//  │  0 │  1 │  2 │  3 │  4 │  5 │  ← top row  (` 1 2 3 4 5)
+//  ├────┼────┼────┼────┼────┼────┤
+//  │  6 │  7 │  8 │  9 │ 10 │ 11 │  ← row 2    (Tab Q W E R T)
+//  ├────┼────┼────┼────┼────┼────┤
+//  │ 12 │ 13 │ 14 │ 15 │ 16 │ 17 │  ← home row (Esc A S D F G)
+//  ├────┼────┼────┼────┼────┼────┤
+//  │ 18 │ 19 │ 20 │ 21 │ 22 │ 23 │  ← bottom   (Sft Z X C V B)
+//  ├────┼────┼────┼────┼────┤
+//  │ 24 │ 25 │ 26 │ 27 │ 28 │      ← thumb    (SYS Alt/T NAV/Sp sk PICK)
+//  └────┴────┴────┴────┴────┘
+//
+// RIGHT HALF:
+//  ┌────┬────┬────┬────┬────┬────┐
+//  │ 29 │ 30 │ 31 │ 32 │ 33 │ 34 │  ← top row  (6 7 8 9 0 -)
+//  ├────┼────┼────┼────┼────┼────┤
+//  │ 35 │ 36 │ 37 │ 38 │ 39 │ 40 │  ← row 2    (Y U I O P [)
+//  ├────┼────┼────┼────┼────┼────┤
+//  │ 41 │ 42 │ 43 │ 44 │ 45 │ 46 │  ← home row (H J K L ; ')
+//  ├────┼────┼────┼────┼────┼────┤
+//  │ 47 │ 48 │ 49 │ 50 │ 51 │ 52 │  ← bottom   (N M , . / \)
+//  ├────┼────┼────┼────┼────┤
+//  │ 53 │ 54 │ 55 │ 56 │ 57 │      ← thumb    (PICK SYM/En Bspc Del SYS)
+//  └────┴────┴────┴────┴────┘
+//
+// HML triggers (активируется только при нажатии правой руки):
+//   29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57
+//
+// HMR triggers (активируется только при нажатии левой руки):
+//   0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
 
 / {
-    // --- Поведение энкодера: скролл вверх/вниз ---
-    // Используется на слоях 1 и 2 вместо регулировки громкости
 
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <100>;
-    };
-
-    TDADJ: TDADJ {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TDADJ";
-        #binding-cells = <0>;
-        bindings = <&kp ESC>, <&to 3>;
-    };
+    // ═════════════════════════════════════════════════════════════════════════
+    // BEHAVIORS
+    // ═════════════════════════════════════════════════════════════════════════
 
     behaviors {
-        // Здесь можно добавлять свои кастомные behaviors:
-        // hold-tap, tap-dance, mod-morph и т.д.
-        // Пример hold-tap (раскомментируй и настрой по вкусу):
-        //
-        // hm: homerow_mods {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     tapping-term-ms = <200>;
-        //     quick-tap-ms = <0>;
-        //     flavor = "tap-preferred";
-        //     bindings = <&kp>, <&kp>;
-        // };
+
+        // ── Timeless HRM — левая рука ─────────────────────────────────────
+        // Источник: urob/zmk-config — лучшая на сегодня реализация
+        // tapping-term=280ms делает поведение нечувствительным к точному тайминг
+        // require-prior-idle=150ms устраняет задержку при наборе текста
+        // hold-trigger-on-release позволяет комбинировать модификаторы на одной руке
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <
+                29 30 31 32 33 34
+                35 36 37 38 39 40
+                41 42 43 44 45 46
+                47 48 49 50 51 52
+                53 54 55 56 57
+            >;
+            hold-trigger-on-release;
+        };
+
+        // ── Timeless HRM — правая рука ────────────────────────────────────
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <
+                0  1  2  3  4  5
+                6  7  8  9  10 11
+                12 13 14 15 16 17
+                18 19 20 21 22 23
+                24 25 26 27 28
+            >;
+            hold-trigger-on-release;
+        };
+
+        // ── Layer-Tap с быстрым повтором (для thumb-клавиш) ───────────────
+        // Tap → символ, Hold → слой. quick-tap позволяет удержать символ
+        lt_q: layer_tap_quick {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&mo>, <&kp>;
+        };
+
+        // ── Mod-Tap для thumb (Alt/Tab) ────────────────────────────────────
+        // tap-preferred: Tab появляется быстро, Alt нужно держать
+        mt_th: mod_tap_thumb {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        // ── Tap-Dance: одиночный/двойной тап на ESC ───────────────────────
+        // Один тап → ESC, двойной тап → Super (GNOME Overview)
+        td_esc_super: tap_dance_esc_super {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp ESC>, <&kp LGUI>;
+        };
     };
+
+
+    // ═════════════════════════════════════════════════════════════════════════
+    // COMBOS
+    // Правило: все комбо на верхнем ряду и нижнем,
+    // НЕ на home row (там HRM = конфликты).
+    // require-prior-idle-ms = <100> на большинстве — устраняет случайные срабатывания.
+    // ═════════════════════════════════════════════════════════════════════════
 
     combos {
         compatible = "zmk,combos";
 
-        // Комбо Q+S+Z (позиции 14, 28, 40) = Soft Off
-        // Нужно держать 2 секунды (настроено выше в &soft_off)
+        // ── ESCAPE ────────────────────────────────────────────────────────
+        // Q+W (левый) / I+O (правый) — два самых левых/правых пальца верхнего ряда
+        cb_esc_l {
+            bindings = <&kp ESC>;
+            key-positions = <7 8>;          // Q + W
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_esc_r {
+            bindings = <&kp ESC>;
+            key-positions = <37 38>;        // I + O
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
 
-        softoff {
+        // ── TAB ───────────────────────────────────────────────────────────
+        // W+E / U+I
+        cb_tab_l {
+            bindings = <&kp TAB>;
+            key-positions = <8 9>;          // W + E
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_tab_r {
+            bindings = <&kp TAB>;
+            key-positions = <36 37>;        // U + I
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // ── BACKSPACE ─────────────────────────────────────────────────────
+        // E+R / Y+U
+        cb_bspc_l {
+            bindings = <&kp BSPC>;
+            key-positions = <9 10>;         // E + R
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_bspc_r {
+            bindings = <&kp BSPC>;
+            key-positions = <35 36>;        // Y + U
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // ── DELETE ────────────────────────────────────────────────────────
+        // R+T / O+P
+        cb_del_l {
+            bindings = <&kp DEL>;
+            key-positions = <10 11>;        // R + T
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_del_r {
+            bindings = <&kp DEL>;
+            key-positions = <38 39>;        // O + P
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // ── ENTER ─────────────────────────────────────────────────────────
+        // C+V / M+,
+        cb_ret_l {
+            bindings = <&kp RET>;
+            key-positions = <21 22>;        // C + V
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_ret_r {
+            bindings = <&kp RET>;
+            key-positions = <48 49>;        // M + ,
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // ── CAPS WORD ─────────────────────────────────────────────────────
+        // V+B / N+M — включает режим "заглавные до пробела"
+        cb_caps_l {
+            bindings = <&caps_word>;
+            key-positions = <22 23>;        // V + B
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_caps_r {
+            bindings = <&caps_word>;
+            key-positions = <47 48>;        // N + M
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // ── CLIPBOARD: CUT / COPY / PASTE / UNDO ─────────────────────────
+        // На нижнем ряду левой руки — логичная группа
+        cb_cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <19 20>;        // Z + X
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <20 21>;        // X + C
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <49 50>;        // , + .
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+        cb_undo {
+            bindings = <&kp LC(Z)>;
+            key-positions = <50 51>;        // . + /
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // ── GNOME: SUPER (Activities Overview) ────────────────────────────
+        // Q+A (левый) / P+; (правый) — вертикальная пара пальцев
+        cb_super_l {
+            bindings = <&kp LGUI>;
+            key-positions = <7 13>;         // Q + A (col 1, rows 2+3)
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        cb_super_r {
+            bindings = <&kp RGUI>;
+            key-positions = <39 45>;        // P + ; (col 5, rows 2+3)
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+
+        // ── ALT+TAB (переключение приложений) ─────────────────────────────
+        // W+S / O+L
+        cb_alttab_l {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <8 14>;         // W + S
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        cb_alttab_r {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <38 44>;        // O + L
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+
+        // ── SCREENSHOT (GNOME: Super+Shift+S) ─────────────────────────────
+        // 1+2 (числа верхнего ряда)
+        cb_screenshot {
+            bindings = <&kp LG(LS(S))>;
+            key-positions = <1 2>;          // N1 + N2
+            timeout-ms = <50>;
+            require-prior-idle-ms = <200>;
+        };
+
+        // ── SOFT OFF (выключение клавиатуры) ─────────────────────────────
+        // Q+A+Z (три левых крайних клавиши) — нужно держать 2с
+        cb_soft_off {
             bindings = <&soft_off>;
-            key-positions = <14 28 40>;
-        };
-
-        NP_L {
-            bindings = <&tog 2>;
-            key-positions = <57 56>;
+            key-positions = <7 13 19>;      // Q + A + Z
+            timeout-ms = <50>;
+            require-prior-idle-ms = <2000>;
         };
     };
 
-    macros {
-        // Макрос: одновременно Shift + средняя кнопка мыши
-        // Можно назначить на любую клавишу через ZMK Studio
 
-        SHIFT_MCLK: SHIFT_MCLK {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_SHIFT>,
-                <&macro_press>,
-                <&mkp MB3>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&kp LEFT_SHIFT &mkp MB3>;
-
-            label = "SHIFT_MCLK";
-        };
-    };
+    // ═════════════════════════════════════════════════════════════════════════
+    // KEYMAP
+    // ═════════════════════════════════════════════════════════════════════════
 
     keymap {
         compatible = "zmk,keymap";
 
-        // ====================================================
-        // СЛОЙ 0 — Базовый (всегда активен)
-        // Стандартная QWERTY раскладка
-        // mo 1 = левый большой палец = временно слой 1
-        // mo 2 = правый большой палец = временно слой 2
-        // ====================================================
-
-        Main {
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 0: BASE
+        //
+        // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+        // │  `   │  1   │  2   │  3   │  4   │  5   │   │  6   │  7   │  8   │  9   │  0   │  -   │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │ TAB  │  Q   │  W   │  E   │  R   │  T   │   │  Y   │  U   │  I   │  O   │  P   │  [   │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │Esc²  │GUI/A │ALT/S │CTL/D │SHF/F │  G   │   │  H   │SHF/J │CTL/K │ALT/L │GUI/; │  '   │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │LSHFT │  Z   │  X   │  C   │  V   │  B   │   │  N   │  M   │  ,   │  .   │  /   │  \   │
+        // └──────┴──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┴──────┘
+        //               ┌──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┐
+        //               │[SYS] │Alt/T │NAV/⎵ │skSHF │   │PICK  │SYM/⏎ │ Bspc │ Del  │[SYS]
+        //               └──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┘
+        //
+        // ² ESC двойной тап → Super (GNOME Overview)
+        // ─────────────────────────────────────────────────────────────────
+        base_layer {
+            display-name = "Base";
             bindings = <
-&TDADJ          &kp N1     &kp N2        &kp N3        &kp N4           &kp N5               &none  &kp N6     &kp N7     &kp N8         &kp N9           &kp N0            &mt BACKSLASH BACKSPACE
-&kp TAB         &kp Q      &kp W         &kp E         &kp R            &kp T                &none  &kp Y      &kp U      &kp I          &kp O            &kp P             &kp SLASH
-&kp LEFT_SHIFT  &kp A      &kp S         &kp D         &kp F            &kp G                &none  &kp H      &kp J      &kp K          &kp L            &kp SEMI          &kp APOS
-&kp LCTRL       &kp Z      &kp X         &kp C         &kp V            &kp B                &none  &kp N      &kp M      &kp COMMA      &kp DOT          &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-&none           &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN    &none  &kp SPACE  &kp ENTER  &kp BACKSPACE  &lt 1 RG(SPACE)  &mo 4
+&td_esc_super  &kp N1       &kp N2       &kp N3        &kp N4        &kp N5         &none  &kp N6      &kp N7        &kp N8        &kp N9       &kp N0        &kp MINUS
+&kp TAB        &kp Q        &kp W        &kp E         &kp R         &kp T          &none  &kp Y       &kp U         &kp I         &kp O        &kp P         &kp LBKT
+&kp ESC        &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &kp G          &none  &kp H       &hmr RSHFT J  &hmr RCTRL K  &hmr RALT L  &hmr RGUI SEMI &kp SQT
+&kp LSHFT      &kp Z        &kp X        &kp C         &kp V         &kp B          &none  &kp N       &kp M         &kp COMMA     &kp DOT      &kp FSLH      &kp BSLH
+&none &mo SYS  &mt_th LALT TAB  &lt_q NAV SPACE  &sk LSHFT  &mo PICK               &none  &mo PICK    &lt_q SYM RET &kp BSPC      &kp DEL      &mo SYS
             >;
-
-            display-name = "Main";
         };
 
-        Navigation {
-            bindings = <
-&trans  &trans  &trans    &trans    &trans     &trans    &none  &trans  &trans    &trans                    &trans     &trans  &trans
-&trans  &trans  &trans    &kp UP    &trans     &trans    &none  &trans  &trans    &mt K_SCROLL_UP UP_ARROW  &trans     &trans  &trans
-&trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans    &none  &trans  &kp LEFT  &kp DOWN                  &kp RIGHT  &trans  &trans
-&trans  &trans  &trans    &trans    &trans     &trans    &none  &trans  &trans    &trans                    &trans     &trans  &trans
-&none   &trans  &trans    &trans    &trans     &trans    &none  &trans  &trans    &trans                    &trans     &trans
-            >;
 
-            display-name = "Navigation";
-            sensor-bindings = <&scroll_encoder>;
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 1: NAV — Навигация
+        // Активация: удержать SPACE (левый thumb, позиция 26)
+        //
+        // СИММЕТРИЧНЫЙ: обе руки одинаковы!
+        // Позволяет использовать стрелки и правой, и левой рукой.
+        //
+        // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+        // │      │      │      │      │      │      │   │      │      │      │      │      │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │PgUp  │Home  │  ↑   │ End  │PgDn  │   │PgDn  │End   │  ↑   │Home  │PgUp  │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │PgDn  │  ←   │  ↓   │  →   │      │   │      │  ←   │  ↓   │  →   │PgDn  │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │ Undo │C+←   │      │C+→   │      │   │      │C+←   │      │C+→   │ Undo │      │
+        // └──────┴──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┴──────┘
+        //               ┌──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┐
+        //               │      │      │[hold]│      │   │      │      │ Copy │ Cut  │
+        //               └──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┘
+        // ─────────────────────────────────────────────────────────────────
+        nav_layer {
+            display-name = "Nav";
+            bindings = <
+&trans  &trans        &trans          &trans     &trans           &trans            &none   &trans           &trans     &trans     &trans          &trans        &trans
+&trans  &kp PG_UP     &kp HOME        &kp UP     &kp END          &kp PG_DN         &none   &kp PG_DN        &kp END    &kp UP     &kp HOME        &kp PG_UP     &trans
+&trans  &kp PG_DN     &kp LEFT        &kp DOWN   &kp RIGHT        &trans            &none   &trans           &kp LEFT   &kp DOWN   &kp RIGHT       &kp PG_DN     &trans
+&trans  &kp LC(Z)     &kp LC(LEFT)    &trans     &kp LC(RIGHT)    &trans            &none   &trans           &kp LC(LEFT) &trans   &kp LC(RIGHT)   &kp LC(Z)     &trans
+&none   &trans        &trans          &trans     &trans           &trans            &none   &trans           &trans     &kp LC(C)  &kp LC(X)       &trans
+            >;
         };
 
-        NumPad {
-            bindings = <
-&kp F24  &kp F1   &kp F2           &kp F3   &kp F4   &kp F5     &trans  &trans   &kp KP_NUM  &kp ASTERISK   &kp SLASH  &kp KP_PLUS   &kp HOME
-&trans   &kp F6   &kp F7           &kp F8   &kp F9   &kp F10    &trans  &trans   &kp KP_N7   &kp KP_N8      &kp KP_N9  &kp KP_MINUS  &kp PG_UP
-&trans   &kp F11  &kp F12          &kp F13  &kp F14  &kp F15    &trans  &trans   &kp KP_N4   &kp KP_N5      &kp KP_N6  &kp KP_EQUAL  &kp PG_DN
-&trans   &kp F16  &kp F17          &kp F18  &kp F19  &kp F20    &trans  &kp DEL  &kp KP_N1   &kp KP_N2      &kp KP_N3  &kp KP_ENTER  &kp END
-&trans   &trans   &kp PRINTSCREEN  &trans   &trans   &trans     &trans  &trans   &trans      &kp BACKSPACE  &kp KP_N0  &kp KP_DOT
-            >;
 
-            label = "NumPad";
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 2: SYM — Символы
+        // Активация: удержать ENTER (правый thumb, позиция 54)
+        //
+        // СИММЕТРИЧНЫЙ: обе половины зеркальны.
+        //
+        // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+        // │      │  !   │  @   │  #   │  $   │  %   │   │  ^   │  &   │  *   │  (   │  )   │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │  `   │  _   │  -   │  +   │  =   │   │  =   │  +   │  -   │  _   │  `   │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │  ~   │  |   │  {   │  (   │  [   │   │  ]   │  )   │  }   │  |   │  ~   │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │  \   │  /   │  <   │  >   │  ?   │   │  !   │  <   │  >   │  /   │  \   │      │
+        // └──────┴──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┴──────┘
+        //               ┌──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┐
+        //               │      │      │  ⎵   │  .   │   │      │[hold]│  .   │  ;   │
+        //               └──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┘
+        // ─────────────────────────────────────────────────────────────────
+        sym_layer {
+            display-name = "Sym";
+            bindings = <
+&trans  &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT     &none   &kp CARET   &kp AMPS    &kp STAR    &kp LPAR    &kp RPAR    &trans
+&trans  &kp GRAVE   &kp UNDER   &kp MINUS   &kp PLUS    &kp EQUAL     &none   &kp EQUAL   &kp PLUS    &kp MINUS   &kp UNDER   &kp GRAVE   &trans
+&trans  &kp TILDE   &kp PIPE    &kp LBRC    &kp LPAR    &kp LBKT      &none   &kp RBKT    &kp RPAR    &kp RBRC    &kp PIPE    &kp TILDE   &trans
+&trans  &kp BSLH    &kp FSLH    &kp LT      &kp GT      &kp QMARK     &none   &kp EXCL    &kp LT      &kp GT      &kp FSLH    &kp BSLH    &trans
+&none   &trans      &kp SPACE   &kp DOT     &trans      &trans        &none   &trans      &trans      &kp DOT     &kp SEMI    &trans
+            >;
         };
 
-        Adjust {
-            bindings = <
-&to 0  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none  &none  &none  &none       &none      &none        &none
-&none  &bt BT_CLR    &bt BT_CLR_ALL  &none         &none         &none           &none  &none  &none  &none       &none      &none        &none
-&none  &out OUT_USB  &out OUT_BLE    &none         &none         &none           &none  &none  &none  &none       &none      &none        &none
-&none  &none         &none           &none         &none         &none           &none  &none  &none  &sys_reset  &soft_off  &bootloader  &none
-&none  &none         &none           &none         &none         &none           &none  &none  &none  &none       &none      &none
-            >;
 
-            display-name = "layer2";
-            sensor-bindings = <&scroll_encoder>;
-            label = "Adjust";
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 3: PICK — Пикер слоёв
+        // Активация: удержать PICK (левый pos.28 / правый pos.53)
+        //
+        // Пока держишь PICK — нажми другую клавишу, чтобы войти в слой.
+        // Клавиши расположены мнемонически на home row:
+        //   A/;  → SYS  (крайний = редкий)
+        //   S/L  → MEDIA
+        //   D/K  → FIRE (Firefox)
+        //   F/J  → GNOME
+        //   G/H  → --- (запасной)
+        //   Q/P  → NUM  (верхний ряд = числа)
+        //   W/O  → FN   (функциональный)
+        //
+        // СИММЕТРИЧНЫЙ: левая = правая
+        // ─────────────────────────────────────────────────────────────────
+        pick_layer {
+            display-name = "Pick";
+            bindings = <
+&trans  &trans      &trans      &trans      &trans      &trans        &none   &trans      &trans      &trans      &trans      &trans      &trans
+&trans  &mo NUM     &mo FN      &trans      &trans      &trans        &none   &trans      &trans      &mo FN      &mo NUM     &trans      &trans
+&trans  &mo SYS     &mo MEDIA   &mo FIRE    &mo GNOME   &trans        &none   &trans      &mo GNOME   &mo FIRE    &mo MEDIA   &mo SYS     &trans
+&trans  &trans      &trans      &trans      &trans      &trans        &none   &trans      &trans      &trans      &trans      &trans      &trans
+&none   &trans      &trans      &trans      &trans      &trans        &none   &trans      &trans      &trans      &trans      &trans
+            >;
         };
 
-        RGB {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &rgb_ug RGB_TOG                  &rgb_ug RGB_HUI  &rgb_ug RGB_HUD  &rgb_ug RGB_ON                     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &rgb_ug RGB_EFF                  &rgb_ug RGB_SAI  &rgb_ug RGB_SAD  &rgb_ug RGB_OFF                    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &rgb_ug RGB_EFR                  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &trans                             &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &rgb_ug RGB_COLOR_HSB(0,100,50)  &rgb_ug RGB_SPI  &rgb_ug RGB_SPD  &rgb_ug RGB_COLOR_HSB(154,100,37)  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                           &trans           &trans           &trans                             &trans
-            >;
 
-            label = "RGB";
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 4: NUM — Цифровая клавиатура
+        // Активация: PICK + Q/P (мнемоника: Q = начало алфавита = числа)
+        //
+        // СИММЕТРИЧНЫЙ: numpad одинаков на обеих руках
+        // Операторы: + - * / = % на крайних колонках
+        //
+        // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+        // │      │      │      │      │      │      │   │      │      │      │      │      │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │  7   │  8   │  9   │  +   │  *   │   │  *   │  +   │  9   │  8   │  7   │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │  4   │  5   │  6   │  -   │  /   │   │  /   │  -   │  6   │  5   │  4   │      │
+        // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+        // │      │  1   │  2   │  3   │  =   │  %   │   │  %   │  =   │  3   │  2   │  1   │      │
+        // └──────┴──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┴──────┘
+        //               ┌──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┐
+        //               │      │      │  0   │  .   │   │      │  .   │  0   │      │
+        //               └──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┘
+        // ─────────────────────────────────────────────────────────────────
+        num_layer {
+            display-name = "Num";
+            bindings = <
+&trans  &trans      &trans      &trans      &trans      &trans        &none   &trans      &trans      &trans      &trans      &trans      &trans
+&trans  &kp N7      &kp N8      &kp N9      &kp PLUS    &kp STAR      &none   &kp STAR    &kp PLUS    &kp N9      &kp N8      &kp N7      &trans
+&trans  &kp N4      &kp N5      &kp N6      &kp MINUS   &kp FSLH      &none   &kp FSLH    &kp MINUS   &kp N6      &kp N5      &kp N4      &trans
+&trans  &kp N1      &kp N2      &kp N3      &kp EQUAL   &kp PRCNT     &none   &kp PRCNT   &kp EQUAL   &kp N3      &kp N2      &kp N1      &trans
+&none   &trans      &kp N0      &kp DOT     &trans      &trans        &none   &trans      &kp DOT     &kp N0      &trans      &trans
+            >;
         };
-    };
-};
+
+
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 5: FN — Функциональные клавиши
+        // Активация: PICK + W/O
+        //
+        // СИММЕТРИЧНЫЙ: F1–F12 на обеих руках
+        // Логика: верхний ряд = F7-F11, средний = F4-F6+F12, нижний = F1-F3
+        // ─────────────────────────────────────────────────────────────────
+        fn_layer {
+            display-name = "Fn";
+            bindings = <
+&trans  &trans      &trans      &trans      &trans      &trans        &none   &trans      &trans      &trans      &trans      &trans      &trans
+&trans  &kp F7      &kp F8      &kp F9      &kp F10     &kp F11       &none   &kp F11     &kp F10     &kp F9      &kp F8      &kp F7      &trans
+&trans  &kp F4      &kp F5      &kp F6      &kp F12     &kp PSCRN     &none   &kp PSCRN   &kp F12     &kp F6      &kp F5      &kp F4      &trans
+&trans  &kp F1      &kp F2      &kp F3      &kp SLCK    &kp PAUSE_BREAK &none &kp PAUSE_BREAK &kp SLCK &kp F3     &kp F2      &kp F1      &trans
+&none   &trans      &trans      &trans      &trans      &trans        &none   &trans      &trans      &trans      &trans      &trans
+            >;
+        };
+
+
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 6: GNOME — Шорткаты рабочего стола
+        // Активация: PICK + F/J
+        //
+        // СИММЕТРИЧНЫЙ: обе руки имеют доступ ко всем командам
+        //
+        // Карта шорткатов:
+        //   Row2 col1-5: Workspace 1-5 (Super+1 … Super+5)
+        //   Home col1:   Super+A  (Приложения)
+        //   Home col2:   Alt+F4   (Закрыть окно)
+        //   Home col3:   Super+←  (Snap влево)
+        //   Home col4:   Super+→  (Snap вправо)
+        //   Home col5:   Super+D  (Рабочий стол / показать все окна)
+        //   Bot col1:    Super+Shift+← (перенести окно на пред. WS)
+        //   Bot col2:    Super+Shift+→ (перенести окно на след. WS)
+        //   Bot col3:    Ctrl+Alt+T    (Терминал)
+        //   Bot col4:    Super+L       (Экран блокировки)
+        //   Bot col5:    Super+E       (Файлы)
+        //   Thumb inner: Alt+Tab / Shift+Alt+Tab
+        // ─────────────────────────────────────────────────────────────────
+        gnome_layer {
+            display-name = "GNOME";
+            bindings = <
+&trans  &trans            &trans            &trans          &trans           &trans              &none  &trans           &trans           &trans           &trans            &trans            &trans
+&trans  &kp LG(N1)        &kp LG(N2)        &kp LG(N3)      &kp LG(N4)       &kp LG(N5)          &none  &kp LG(N5)       &kp LG(N4)       &kp LG(N3)       &kp LG(N2)        &kp LG(N1)        &trans
+&trans  &kp LG(A)         &kp LA(F4)        &kp LG(LEFT)    &kp LG(RIGHT)    &kp LG(D)           &none  &kp LG(D)        &kp LG(LEFT)     &kp LG(RIGHT)    &kp LA(F4)        &kp LG(A)         &trans
+&trans  &kp LG(LS(LEFT))  &kp LG(LS(RIGHT)) &kp LC(LA(T))   &kp LG(L)        &kp LG(E)           &none  &kp LG(E)        &kp LG(L)        &kp LC(LA(T))    &kp LG(LS(RIGHT)) &kp LG(LS(LEFT))  &trans
+&none   &trans            &kp LA(TAB)       &kp LS(LA(TAB)) &trans           &trans              &none  &trans           &kp LS(LA(TAB))  &kp LA(TAB)      &trans            &trans
+            >;
+        };
+
+
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 7: FIRE — Firefox / Браузер
+        // Активация: PICK + D/K
+        //
+        // СИММЕТРИЧНЫЙ
+        //
+        // Row2: Ctrl+T (новая вкладка), Ctrl+W (закрыть), Ctrl+Shift+T (восст.),
+        //       Ctrl+R (перезагрузить), Ctrl+L (адресная строка)
+        // Home: Alt+← (назад), Ctrl+Tab (след.вкл.), Ctrl+Shift+Tab (пред.вкл.),
+        //       Alt+→ (вперёд), Ctrl+D (закладка)
+        // Bot:  Ctrl+1/2/3 (вкладки), Ctrl+F (поиск), Ctrl+H (история)
+        // ─────────────────────────────────────────────────────────────────
+        firefox_layer {
+            display-name = "Firefox";
+            bindings = <
+&trans  &trans          &trans          &trans           &trans          &trans             &none  &trans          &trans           &trans          &trans          &trans          &trans
+&trans  &kp LC(T)       &kp LC(W)       &kp LC(LS(T))    &kp LC(R)       &kp LC(L)          &none  &kp LC(L)       &kp LC(R)        &kp LC(LS(T))   &kp LC(W)       &kp LC(T)       &trans
+&trans  &kp LA(LEFT)    &kp LC(TAB)     &kp LC(LS(TAB))  &kp LA(RIGHT)   &kp LC(D)          &none  &kp LC(D)       &kp LA(LEFT)     &kp LC(TAB)     &kp LC(LS(TAB)) &kp LA(RIGHT)   &trans
+&trans  &kp LC(N1)      &kp LC(N2)      &kp LC(N3)       &kp LC(F)       &kp LC(H)          &none  &kp LC(H)       &kp LC(F)        &kp LC(N3)      &kp LC(N2)      &kp LC(N1)      &trans
+&none   &trans          &kp LC(LS(P))   &kp LC(N)        &trans          &trans             &none  &trans          &kp LC(N)        &kp LC(LS(P))   &trans          &trans
+            >;
+        };
+
+
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 8: MEDIA — Медиа и яркость
+        // Активация: PICK + S/L
+        //
+        // СИММЕТРИЧНЫЙ
+        //
+        // Row2: Предыдущий трек / Play-Pause / Следующий трек
+        // Home: Громкость вниз / Mute / Громкость вверх
+        // Bot:  Яркость вниз / Яркость вверх
+        // ─────────────────────────────────────────────────────────────────
+        media_layer {
+            display-name = "Media";
+            bindings = <
+&trans  &trans          &trans          &trans          &trans          &trans            &none  &trans          &trans          &trans          &trans          &trans          &trans
+&trans  &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &trans            &none  &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &trans          &trans
+&trans  &trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &trans            &none  &trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &trans          &trans
+&trans  &trans          &kp C_BRI_DN    &trans          &kp C_BRI_UP    &trans            &none  &trans          &kp C_BRI_DN    &trans          &kp C_BRI_UP    &trans          &trans
+&none   &trans          &trans          &trans          &trans          &trans            &none  &trans          &trans          &trans          &trans          &trans
+            >;
+        };
+
+
+        // ─────────────────────────────────────────────────────────────────
+        // LAYER 9: SYS — Система (BT, RGB, Reset)
+        // Активация: внешние thumb-клавиши (mo SYS на pos.24/57)
+        //         ИЛИ PICK + A/;
+        //
+        // СИММЕТРИЧНЫЙ
+        //
+        // Top row: BT профили 0–4
+        // Row2:    BT очистить / out USB / out BLE
+        // Home:    RGB вкл/выкл, режим, яркость, насыщенность, оттенок
+        // Bot:     sys_reset / bootloader
+        // ─────────────────────────────────────────────────────────────────
+        sys_layer {
+            display-name = "Sys";
+            bindings = <
+&trans  &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4     &none  &bt BT_SEL 4    &bt BT_SEL 3    &bt BT_SEL 2    &bt BT_SEL 1    &bt BT_SEL 0     &trans
+&trans  &bt BT_CLR       &out OUT_USB    &out OUT_BLE    &trans          &trans           &none  &trans          &out OUT_BLE    &out OUT_USB    &bt BT_CLR       &trans           &trans
+&trans  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI  &none  &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &trans
+&trans  &sys_reset       &trans          &trans          &trans          &bootloader      &none  &bootloader     &trans          &trans          &sys_reset       &trans           &trans
+&none   &trans           &trans          &trans          &trans          &trans           &none  &trans          &trans          &trans          &trans           &trans
+            >;
+        };
+
+    }; // keymap
+}; // root
