@@ -328,3 +328,6 @@ layers:
 combos:
 - p: [14, 28, 40]
   k: '&soft_off'
+- p: [57, 56]
+  k: {t: NumPad, h: toggle}
+  l: [Navigation, Main, NumPad, Adjust]
