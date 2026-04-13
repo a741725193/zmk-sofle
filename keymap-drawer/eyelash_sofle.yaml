@@ -63,7 +63,7 @@ layers:
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:backspace$$', type: backspace}
-  - Navigation
+  - {t: 'Gui+$$mdi:keyboard-space$$', h: Navigation}
   - RGB
   Navigation:
   - {t: '$$mdi:transfer$$', type: trans}
@@ -131,7 +131,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   NumPad:
-  - {t: '$$mdi:transfer$$', type: trans}
+  - F24
   - F1
   - F2
   - F3
