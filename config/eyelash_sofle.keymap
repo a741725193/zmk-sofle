@@ -133,11 +133,11 @@
 
         Main {
             bindings = <
-&TDADJ            &kp N1     &kp N2        &kp N3        &kp N4           &kp N5               &none  &kp N6     &kp N7     &kp N8         &kp N9   &kp N0            &mt BACKSLASH BACKSPACE
-&kp TAB           &kp Q      &kp W         &kp E         &kp R            &kp T                &none  &kp Y      &kp U      &kp I          &kp O    &kp P             &kp SLASH
-&kp LEFT_SHIFT    &kp A      &kp S         &kp D         &kp F            &kp G                &none  &kp H      &kp J      &kp K          &kp L    &kp SEMI          &kp APOS
-&kp LEFT_CONTROL  &kp Z      &kp X         &kp C         &kp V            &kp B                &none  &kp N      &kp M      &kp COMMA      &kp DOT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-&none             &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN    &none  &kp SPACE  &kp ENTER  &kp BACKSPACE  &mo 1    &mo 4
+&TDADJ          &kp N1     &kp N2        &kp N3        &kp N4           &kp N5               &none  &kp N6     &kp N7     &kp N8         &kp N9           &kp N0            &mt BACKSLASH BACKSPACE
+&kp TAB         &kp Q      &kp W         &kp E         &kp R            &kp T                &none  &kp Y      &kp U      &kp I          &kp O            &kp P             &kp SLASH
+&kp LEFT_SHIFT  &kp A      &kp S         &kp D         &kp F            &kp G                &none  &kp H      &kp J      &kp K          &kp L            &kp SEMI          &kp APOS
+&kp LCTRL       &kp Z      &kp X         &kp C         &kp V            &kp B                &none  &kp N      &kp M      &kp COMMA      &kp DOT          &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&none           &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN    &none  &kp SPACE  &kp ENTER  &kp BACKSPACE  &lt 1 RG(SPACE)  &mo 4
             >;
 
             display-name = "Main";
@@ -158,11 +158,11 @@
 
         NumPad {
             bindings = <
-&trans  &kp F1   &kp F2           &kp F3   &kp F4   &kp F5     &trans  &trans   &kp KP_NUM  &kp ASTERISK   &kp SLASH  &kp KP_PLUS   &kp HOME
-&trans  &kp F6   &kp F7           &kp F8   &kp F9   &kp F10    &trans  &trans   &kp KP_N7   &kp KP_N8      &kp KP_N9  &kp KP_MINUS  &kp PG_UP
-&trans  &kp F11  &kp F12          &kp F13  &kp F14  &kp F15    &trans  &trans   &kp KP_N4   &kp KP_N5      &kp KP_N6  &kp KP_EQUAL  &kp PG_DN
-&trans  &kp F16  &kp F17          &kp F18  &kp F19  &kp F20    &trans  &kp DEL  &kp KP_N1   &kp KP_N2      &kp KP_N3  &kp KP_ENTER  &kp END
-&trans  &trans   &kp PRINTSCREEN  &trans   &trans   &trans     &trans  &trans   &trans      &kp BACKSPACE  &kp KP_N0  &kp KP_DOT
+&kp F24  &kp F1   &kp F2           &kp F3   &kp F4   &kp F5     &trans  &trans   &kp KP_NUM  &kp ASTERISK   &kp SLASH  &kp KP_PLUS   &kp HOME
+&trans   &kp F6   &kp F7           &kp F8   &kp F9   &kp F10    &trans  &trans   &kp KP_N7   &kp KP_N8      &kp KP_N9  &kp KP_MINUS  &kp PG_UP
+&trans   &kp F11  &kp F12          &kp F13  &kp F14  &kp F15    &trans  &trans   &kp KP_N4   &kp KP_N5      &kp KP_N6  &kp KP_EQUAL  &kp PG_DN
+&trans   &kp F16  &kp F17          &kp F18  &kp F19  &kp F20    &trans  &kp DEL  &kp KP_N1   &kp KP_N2      &kp KP_N3  &kp KP_ENTER  &kp END
+&trans   &trans   &kp PRINTSCREEN  &trans   &trans   &trans     &trans  &trans   &trans      &kp BACKSPACE  &kp KP_N0  &kp KP_DOT
             >;
 
             label = "NumPad";
