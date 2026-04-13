@@ -2037,6 +2037,12 @@ rect.held, rect.combo.held {
 <rect rx="6" ry="6" x="89" y="148" width="28" height="26" class="combo"/>
 <text x="103" y="161" class="combo tap"><tspan style="font-size: 67%">&amp;soft_off</tspan></text>
 </g>
+<g class="combo combopos-1">
+<rect rx="6" ry="6" x="338" y="276" width="28" height="26" class="combo"/>
+<a href="#NumPad">
+<text x="352" y="289" class="combo tap layer-activator">NumPad</text>
+</a><text x="352" y="300" class="combo hold">toggle</text>
+</g>
 </g>
 </g>
 </svg>
