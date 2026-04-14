@@ -27,20 +27,19 @@
         zmk,backlight = &backlight;
     };
 
-	left_encoder: encoder_left {
-		compatible = "alps,ec11";
-		label = "LEFT_ENCODER";
-		resolution = <4>;
-        steps = <40>;
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
         a-gpios = <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-	    b-gpios = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		status = "disabled";
-	};
+        b-gpios = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <40>;
+        status = "disabled";
+    };
 
     sensors {
-		compatible = "zmk,keymap-sensors";
-		sensors = <&left_encoder>;
-	};
+        compatible = "zmk,keymap-sensors";
+        triggers-per-rotation = <20>;
+        sensors = <&left_encoder>;
+    };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";

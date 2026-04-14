@@ -26,6 +26,8 @@
     trigger-period-ms = <16>;
 };
 
+&soft_off { hold-time-ms = <2000>; };
+
 / {
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
@@ -54,6 +56,9 @@
         enter {
             bindings = <&kp ENTER>;
             key-positions = <34 35 36>;
+        softoff {
+            bindings = <&soft_off>;
+            key-positions = <14 28 40>;
         };
     };
 
@@ -63,6 +68,19 @@
             #binding-cells = <0>;
             bindings = <&kp LS(N0) &kp LS(NON_US_BSLH)>;
             label = "LAMBDA";
+        SHIFT_MCLK: SHIFT_MCLK {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_SHIFT>,
+                <&macro_press>,
+                <&mkp MB3>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&kp LEFT_SHIFT &mkp MB3>;
+
+            label = "SHIFT_MCLK";
         };
     };
 
