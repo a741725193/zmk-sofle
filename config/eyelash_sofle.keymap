@@ -82,6 +82,11 @@
             bindings = <&kp LG(MINUS)>;
             key-positions = <13 14>;
         };
+
+        texttovoice {
+            bindings = <&kp LA(LC(LG(DELETE)))>;
+            key-positions = <20 21 22>;
+        };
     };
 
     keymap {
