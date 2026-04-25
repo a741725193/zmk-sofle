@@ -28,13 +28,6 @@
 
 &soft_off { hold-time-ms = <2000>; };
 
-&mt {
-    tapping-term-ms = <280>;
-    quick-tap-ms = <175>;
-    require-prior-idle-ms = <150>;
-    flavor = "balanced";
-};
-
 / {
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
@@ -42,6 +35,18 @@
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
         tap-ms = <100>;
+    };
+
+    hmr: hmr {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HMR";
+        bindings = <&none>, <&none>;
+
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <280>;
+        quick-tap-ms = <175>;
+        require-prior-idle-ms = <150>;
     };
 
     behaviors {
