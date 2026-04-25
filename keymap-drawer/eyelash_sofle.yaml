@@ -277,3 +277,5 @@ combos:
   k: Alt+Gui+-
 - p: [13, 14]
   k: Gui+-
+- p: [20, 21, 22]
+  k: Alt+Ctl+Gui+$$mdi:backspace-reverse-outline$$
