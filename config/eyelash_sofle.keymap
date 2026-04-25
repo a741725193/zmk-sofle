@@ -132,7 +132,7 @@
 
         two {
             bindings = <
-&kp GRAVE   &kp F1            &kp F2                &kp F3             &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9         &kp F10           &trans
+&kp GRAVE   &kp F1            &kp F2                &kp F3             &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9         &kp F10           &kp C
 &trans      &kp GRAVE         &kp LG(LS(UP_ARROW))  &mkp MCLK          &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp LA(LEFT)     &kp UP      &kp LA(RIGHT)  &kp MINUS         &kp EQUAL
 &kp TAB     &kp LG(LS(LEFT))  &kp LS(LG(DOWN))      &kp LG(LS(RIGHT))  &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT      &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF   &rgb_ug RGB_ON        &rgb_ug RGB_EFF    &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11        &kp F12           &trans
