@@ -143,7 +143,7 @@ layers:
   - F8
   - F9
   - F10
-  - {t: '$$mdi:transfer$$', type: trans}
+  - C
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '`', s: '~'}
   - Gui+Sft+$$mdi:arrow-up-bold$$
