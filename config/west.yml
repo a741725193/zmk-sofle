@@ -3,15 +3,15 @@ manifest:
       # zmk official
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: gpeye                         #new entry
-      url-base: https://github.com/GPeye  #new entry
+    - name: urchin-peripheral-animation                         #new entry
+      url-base: https://github.com/superlarps
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
     - name: urchin-peripheral-animation   #new entry
-      remote: gpeye                       #new entry
+      remote: urchin-peripheral-animation
       revision: main                      #new entry
   self:
     path: config
