@@ -37,4 +37,4 @@ manifest:
       remote: cormoran
       revision: zmk-v0.3.0.0
   self:
-    path: boards
+    path: config
