@@ -6,6 +6,9 @@
 */
 
 #include "eyelash_sofle.dtsi"
+#include <behaviors/battery_history_request.dtsi>
+#include <input/processors.dtsi>
+#include <input/processors/runtime-input-processor.dtsi>
 
 &kscan0 {
      col-gpios
