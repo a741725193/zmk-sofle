@@ -6,6 +6,7 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #include <input/processors.dtsi>
+#include <behaviors/runtime-sensor-rotate.dtsi>
 
 /*
 
@@ -46,6 +47,20 @@
         tap-ms = <30>;
     };
 
+    rsr_vol: rsr_vol {
+        compatible = "zmk,behavior-runtime-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        tap-ms = <5>;
+        cw-binding = <&kp C_VOL_UP>;
+        ccw-binding = <&kp C_VOL_DN>;
+    };
+
+    rsr_trans: rsr_trans {
+        compatible = "zmk,behavior-runtime-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        tap-ms = <0>;
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -58,7 +73,7 @@
 &kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
+            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "LAYER0";
         };
 
@@ -72,7 +87,7 @@
             >;
 
             display-name = "layer1";
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&rsr_vol &rsr_trans>;
         };
 
         layer_2 {
@@ -84,7 +99,7 @@
 &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&rsr_vol &rsr_trans>;
         };
     };
 };
