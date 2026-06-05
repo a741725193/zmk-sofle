@@ -38,15 +38,20 @@
         tap-ms = <100>;
     };
 
-    rsr_vol: rsr_vol {
-        compatible = "zmk,behavior-runtime-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        tap-ms = <5>;
-        cw-binding = <&kp C_VOL_UP>;
-        ccw-binding = <&kp C_VOL_DN>;
-    };
-
     behaviors {
+        rsr_vol: rsr_vol {
+            compatible = "zmk,behavior-runtime-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            tap-ms = <5>;
+            cw-binding = <&kp C_VOL_UP>;
+            ccw-binding = <&kp C_VOL_DN>;
+        };
+
+        rsr_trans: rsr_trans {
+            compatible = "zmk,behavior-runtime-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            tap-ms = <0>;
+        };
     };
 
     combos {
