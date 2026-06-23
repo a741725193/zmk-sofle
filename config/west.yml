@@ -17,7 +17,7 @@ manifest:
       revision: main
     - name: zmk-module-ble-management
       remote: cormoran
-      revision: z851661cd21f2aded8ec649da86e01a207dc4b973
+      revision: 851661cd21f2aded8ec649da86e01a207dc4b973
     - name: zmk-module-battery-history
       remote: cormoran
       revision: main
