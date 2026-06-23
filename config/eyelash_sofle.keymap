@@ -115,7 +115,7 @@
 &trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &mmv MOVE_UP &kp F12    &kp UNDER    &kp PLUS
 &trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp RCLK     &kp RBRC
 &trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &mkp MCLK  &soft_off  &bootloader  &mkp LCLK
-&trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
+&trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &mkp LCLK  &trans  &trans      &trans     &trans
             >;
 
             display-name = "LAYER2";
