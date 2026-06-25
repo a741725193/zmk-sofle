@@ -52,7 +52,7 @@
 &kp TAB     &kp Q      &kp W     &kp E     &kp R      &kp T                  &mmv MOVE_DOWN   &kp Y            &kp U      &kp I      &kp O    &kp P     &kp BACKSPACE
 &kp LCTRL   &kp A      &kp S     &kp D     &kp F      &kp G                  &mmv MOVE_LEFT   &kp H            &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
 &sft_lrt    &kp Z      &kp X     &kp C     &kp V      &kp B                  &mmv MOVE_RIGHT  &kp N            &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RET
-&kp C_MUTE  &kp RCTRL  &kp LGUI  &kp LALT  &kp SPACE  &lt LOWER LBKT         &mkp LCLK        &lt LOWER RBKT   &lt RAISE SPACE  &kp MINUS  &kp EQUAL  &none 
+&kp C_MUTE  &kp RCTRL  &kp LGUI  &kp LALT  &kp SPACE  &lt RAISE LBKT         &mkp LCLK        &lt LOWER RBKT   &lt RAISE SPACE  &kp MINUS  &kp EQUAL  &none 
             >;
 
             display-name = "DEFAULT";
