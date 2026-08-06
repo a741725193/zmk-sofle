@@ -2,22 +2,30 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-      # Additional modules containing boards/shields/custom code can be listed here as well.
-      # See:
-      # - https://zmk.dev/docs/features/modules
-      # - https://docs.zephyrproject.org/3.5.0/develop/west/manifest.html#projects
-    - name: gpeye
-      url-base: https://github.com/GPeye
+    - name: cormoran
+      url-base: https://github.com/cormoran
   projects:
     - name: eyelash_sofle
       url: https://github.com/a741725193/zmk-sofle
-      revision: refactor
-    - name: mario-peripheral-animation
-      remote: gpeye
-      revision: main 
-    - name: zmk
-      remote: zmkfirmware
       revision: main
+    - name: zmk
+      remote: cormoran
+      revision: v0.3-branch+dya
       import: app/west.yml
+    - name: zmk-behavior-runtime-sensor-rotate
+      remote: cormoran
+      revision: main
+    - name: zmk-module-ble-management
+      remote: cormoran
+      revision: zmk-v0.3.0.0
+    - name: zmk-module-battery-history
+      remote: cormoran
+      revision: main
+    - name: zmk-module-settings-rpc
+      remote: cormoran
+      revision: main
+    - name: zmk-module-runtime-input-processor
+      remote: cormoran
+      revision: zmk-v0.3.0.0
   self:
     path: config

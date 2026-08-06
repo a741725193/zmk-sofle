@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 #
 
-if BOARD_EYELASH_SOFLE_LEFT
+if SHIELD_EYELASH_SOFLE_LEFT
 
 config ZMK_KEYBOARD_NAME
     default "Eyelash Sofle"
@@ -11,25 +11,10 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-endif # BOARD_EYELASH_SOFLE_LEFT
+endif # SHIELD_EYELASH_SOFLE_LEFT
 
 
-if BOARD_EYELASH_SOFLE_LEFT || BOARD_EYELASH_SOFLE_RIGHT
-
-config BOARD
-    default "eyelash_sofle"
-
-config BOARD_ENABLE_DCDC
-    bool "Enable DCDC mode"
-    select SOC_DCDC_NRF52X
-    default y
-    depends on (BOARD_EYELASH_SOFLE_LEFT || BOARD_EYELASH_SOFLE_RIGHT)
-
-config BOARD_ENABLE_DCDC_HV
-    bool "Enable High Voltage DCDC converter"
-    default y
-    select SOC_DCDC_NRF52X_HV
-    depends on (BOARD_EYELASH_SOFLE_LEFT || BOARD_EYELASH_SOFLE_RIGHT)
+if SHIELD_EYELASH_SOFLE_LEFT || SHIELD_EYELASH_SOFLE_RIGHT
 
 config ZMK_SPLIT
     default y
@@ -50,7 +35,7 @@ endif # USB
 if ZMK_DISPLAY
 
 config I2C
-    default y
+   default y
 
 config SSD1306
     default y
@@ -64,7 +49,7 @@ endif
 if SSD1306
 
 config LV_Z_VDB_SIZE
-    default 64
+   default 64
 
 config LV_DPI_DEF
     default 148
@@ -88,4 +73,4 @@ config LED_PWM
 
 endif # ZMK_BACKLIGHT
 
-endif # BOARD_EYELASH_SOFLE_LEFT || BOARD_EYELASH_SOFLE_RIGHT
+endif # SHIELD_EYELASH_SOFLE_LEFT || SHIELD_EYELASH_SOFLE_RIGHT
