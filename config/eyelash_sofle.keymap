@@ -57,11 +57,11 @@
 
         layer0 {
             bindings = <
-&kp ESC     &kp N1        &kp N2        &kp N3     &kp N4       &kp N5       &kp UP_ARROW     &kp N6       &kp N7           &kp N8      &kp N9            &kp N0             &kp MINUS
-&kp TAB     &kp Q         &kp W         &kp E      &kp R        &kp T        &kp DOWN_ARROW   &kp Y        &kp U            &kp I       &kp O             &kp P              &kp EQUAL
-&kp LCTRL   &kp A         &kp S         &kp D      &kp F        &kp G        &kp LEFT_ARROW   &kp H        &kp J            &kp K       &kp L             &kp SEMI           &kp APOS
-&kp LSHFT   &kp Z         &kp X         &kp C      &kp V        &kp B        &kp RIGHT_ARROW  &kp N        &kp M            &kp COMMA   &kp DOT           &kp FSLH           &kp BACKSLASH
-&kp C_MUTE  &kp LEFT_WIN  &kp LEFT_ALT  &kp LCTRL  &lt 3 SPACE  &lt 3 ESC    &kp ENTER        &lt 2 ENTER  &lt 3 BACKSPACE  &kp DELETE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&kp ESC     &kp N1        &kp N2        &kp N3     &kp N4     &kp N5       &kp UP_ARROW     &kp N6       &kp N7        &kp N8         &kp N9            &kp N0             &kp MINUS
+&kp TAB     &kp Q         &kp W         &kp E      &kp R      &kp T        &kp DOWN_ARROW   &kp Y        &kp U         &kp I          &kp O             &kp P              &kp EQUAL
+&kp LCTRL   &kp A         &kp S         &kp D      &kp F      &kp G        &kp LEFT_ARROW   &kp H        &kp J         &kp K          &kp L             &kp SEMI           &kp APOS
+&kp LSHFT   &kp Z         &kp X         &kp C      &kp V      &kp B        &kp RIGHT_ARROW  &kp N        &kp M         &kp COMMA      &kp DOT           &kp FSLH           &kp BACKSLASH
+&kp C_MUTE  &kp LEFT_WIN  &kp LEFT_ALT  &kp LCTRL  &kp SPACE  &lt 2 ESC    &kp ENTER        &lt 2 ENTER  &lt 3 DELETE  &kp BACKSPACE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -86,7 +86,7 @@
 &kp GRAVE  &kp F1  &kp F2           &kp F3           &kp F4           &kp F5       &mmv MOVE_UP     &kp F6     &kp F7            &kp F8             &kp F9             &kp F10        &kp F12
 &kp CAPS   &trans  &kp KP_N7        &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS     &mmv MOVE_DOWN   &trans     &kp INS           &kp HOME           &kp PAGE_UP        &none          &kp MINUS
 &trans     &trans  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp COMMA    &mmv MOVE_LEFT   &trans     &kp DEL           &kp END            &kp PAGE_DOWN      &none          &trans
-&trans     &trans  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp EQUAL    &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL         &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp RALT       &kp BACKSLASH
+&trans     &trans  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp EQUAL    &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL         &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp RALT       &kp RIGHT_ALT
 &trans     &trans  &trans           &trans           &trans           &trans       &mkp LCLK        &trans     &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp RALT           &kp RIGHT_ALT
             >;
 
@@ -95,10 +95,10 @@
 
         layer_3 {
             bindings = <
-&trans  &kp F1  &kp F2     &kp F3     &kp F4     &kp F5       &trans  &kp F6         &kp F7     &kp F8        &kp F9     &kp F10     &kp F12
-&trans  &trans  &trans     &trans     &trans     &trans       &trans  &kp PAGE_UP    &none      &kp UP_ARROW  &none      &none       &trans
-&trans  &trans  &trans     &trans     &kp LC(X)  &trans       &trans  &kp PAGE_DOWN  &kp LEFT   &kp DOWN      &kp RIGHT  &kp DELETE  &kp BSPC
-&trans  &trans  &kp LCTRL  &kp LSHFT  &kp LC(C)  &kp LC(V)    &trans  &kp BSPC       &kp ENTER  &kp LBKT      &kp RBKT   &none       &kp RALT
+&trans  &kp F1  &kp F2     &kp F3     &kp F4     &kp F5       &trans  &kp F6         &kp F7     &kp F8        &kp F9     &kp F10        &kp F12
+&trans  &trans  &trans     &trans     &trans     &trans       &trans  &kp PAGE_UP    &none      &kp UP_ARROW  &none      &none          &trans
+&trans  &trans  &trans     &trans     &kp LC(X)  &trans       &trans  &kp PAGE_DOWN  &kp LEFT   &kp DOWN      &kp RIGHT  &kp DELETE     &kp BSPC
+&trans  &trans  &kp LCTRL  &kp LSHFT  &kp LC(C)  &kp LC(V)    &trans  &kp BSPC       &kp ENTER  &kp LBKT      &kp RBKT   &kp RIGHT_ALT  &kp RALT
 &trans  &trans  &trans     &trans     &trans     &trans       &trans  &kp ENTER      &trans     &trans        &trans     &kp SPACE
             >;
         };
