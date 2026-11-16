@@ -4,11 +4,29 @@
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
+
+// Layout ported from the Corne (../crone, keyboards/crkbd/rev4_1/standard/keymaps/via).
+//
+// Corne 3x6 grid    -> Sofle rows 2-4 (Q / A / Z rows).
+// Corne 3 thumbs    -> Sofle's three innermost thumb keys per side.
+// Corne inner keys  -> joystick: left-top = up, right-top = down,
+//                      left-lower = left, right-lower = right.
+// Sofle number row and the two outer thumb keys per side are &none on every layer.
+//
+// Layers: 0 Base, 1 Nav, 2 Sym, 3 Fn, 4 Game, 5 GameNum, 6 Mouse, 7 System.
+//
+// Key positions (for hold-trigger-key-positions):
+//    0- 5 |  6 |  7-12      number row (6 = joystick up)
+//   13-18 | 19 | 20-25      Q row      (19 = joystick down)
+//   26-31 | 32 | 33-38      A row      (32 = joystick left)
+//   39-44 | 45 | 46-51      Z row      (45 = joystick right)
+//   52 encoder press, 53 54 55 56 57 | 58 joystick press | 59 60 61 62 63
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
@@ -35,17 +53,98 @@
         tap-ms = <100>;
     };
 
-    hold_tap: hold_tap {
-        compatible = "zmk,behavior-hold-tap";
-        label = "HOLD_TAP";
-        bindings = <&kp>, <&kp>;
+    behaviors {
+        // Home row mods, matching the Corne's QMK settings:
+        //   250 ms tapping term + Permissive Hold  -> balanced, 250 ms
+        //   Chordal Hold (hold only across hands)  -> hold-trigger-key-positions = other hand + thumbs/joystick
+        //   Flow Tap 150 ms                        -> require-prior-idle-ms = 150
+        //   Retro Tapping off                      -> no retro-tap
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <250>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <
+                7 8 9 10 11 12  20 21 22 23 24 25  33 34 35 36 37 38  46 47 48 49 50 51
+                6 19 32 45  52 53 54 55 56 57 58 59 60 61 62 63
+            >;
+            hold-trigger-on-release;
+        };
 
-        #binding-cells = <2>;
-        flavor = "tap-preferred";
-        tapping-term-ms = <250>;
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <250>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <
+                0 1 2 3 4 5  13 14 15 16 17 18  26 27 28 29 30 31  39 40 41 42 43 44
+                6 19 32 45  52 53 54 55 56 57 58 59 60 61 62 63
+            >;
+            hold-trigger-on-release;
+        };
+
+        // Space/Enter layer keys: shorter 200 ms term, no Flow Tap, either hand.
+        lt_th: thumb_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <250>;
+        };
+
+        // Right thumb Shift: double-tap for Caps Word.
+        rsft_cw: rshift_caps_word {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&kp RSHFT>, <&caps_word>;
+        };
     };
 
-    behaviors {
+    macros {
+        // Helldivers 2 stratagems: tap Left Ctrl (stratagem menu, set to toggle
+        // in-game), wait 80 ms, then the code on HJKL, each key held 35 ms with a
+        // 35 ms gap. Raise the delays if the game drops inputs.
+        hd_rein: hd_reinforce {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <35>;
+            wait-ms = <80>;
+            bindings
+                = <&macro_tap &kp LCTRL>
+                , <&macro_wait_time 35>
+                , <&macro_tap &kp K &kp J &kp L &kp H &kp K>  // up down right left up
+                ;
+        };
+
+        hd_supp: hd_resupply {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <35>;
+            wait-ms = <80>;
+            bindings
+                = <&macro_tap &kp LCTRL>
+                , <&macro_wait_time 35>
+                , <&macro_tap &kp J &kp J &kp K &kp L>  // down down up right
+                ;
+        };
+    };
+
+    // Hold both outer Corne thumbs (Fn + Mouse) for Bluetooth / output / RGB.
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        system {
+            if-layers = <3 6>;
+            then-layer = <7>;
+        };
     };
 
     keymap {
@@ -53,51 +152,105 @@
 
         Base {
             bindings = <
-&kp ESC     &kp N1     &kp N2        &kp N3  &kp N4            &kp N5       &none             &kp N6     &kp N7             &kp N8     &kp N9     &kp N0     &kp BACKSPACE
-&kp GRAVE   &kp Q      &kp W         &kp E   &kp R             &kp T        &none             &kp Y      &kp U              &kp I      &kp O      &kp P      &kp BSLH
-&kp TAB     &kp A      &kp S         &kp D   &kp F             &kp G        &kp K_PREVIOUS    &kp H      &kp J              &kp K      &kp L      &kp SEMI   &kp APOS
-&kp LSHFT   &kp Z      &kp X         &kp C   &kp V             &kp B        &kp K_NEXT        &kp N      &kp M              &kp COMMA  &kp DOT    &kp FSLH   &kp DELETE
-&kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &mo 1   &kp LEFT_BRACKET  &kp SPACE    &kp K_PLAY_PAUSE  &kp ENTER  &kp RIGHT_BRACKET  &mo 2      &kp MINUS  &kp EQUAL
+&none       &none         &none            &none             &none            &none     &kp PG_UP         &none      &none            &none             &none            &none      &none
+&kp ESC     &kp Q         &kp W            &kp E             &kp R            &kp T     &kp PG_DN         &kp Y      &kp U            &kp I             &kp O            &kp P      &kp BACKSPACE
+&kp TAB     &kp A         &hml LALT S      &hml LCTRL D      &hml LGUI F      &kp G     &kp HOME          &kp H      &hmr LGUI J      &hmr LCTRL K      &hmr LALT L      &kp SEMI   &kp BSLH
+&kp LSHFT   &kp Z         &kp X            &kp C             &kp V            &kp B     &kp END           &kp N      &kp M            &kp COMMA         &kp DOT          &kp FSLH   &kp APOS
+&kp C_MUTE  &none         &none            &mo 3             &kp LALT         &lt_th 1 SPACE  &kp C_PLAY_PAUSE  &lt_th 2 ENTER  &rsft_cw  &mo 6     &none            &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "Base";
         };
 
-        Symbols {
+        Nav {
             bindings = <
-&kp GRAVE     &kp F1     &kp F2  &kp F3  &kp F4  &kp F5    &kp PAGE_UP    &kp F6          &kp F7          &kp F8        &kp F9     &kp F10  &trans
-&trans        &kp F11    &trans  &trans  &trans  &trans    &kp PAGE_DOWN  &trans          &trans          &trans        &trans     &kp F12  &trans
-&trans        &kp TILDE  &trans  &trans  &trans  &trans    &kp HOME       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans   &trans
-&kp LEFT_ALT  &trans     &trans  &trans  &trans  &trans    &kp END        &trans          &trans          &trans        &trans     &trans   &trans
-&trans        &trans     &trans  &trans  &trans  &trans    &trans         &trans          &trans          &mo 3         &trans     &trans
+&none    &none     &none     &none     &none     &none     &kp C_VOL_UP  &none       &none       &none     &none        &none   &none
+&trans   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp C_VOL_DN  &kp N6      &kp N7      &kp N8    &kp N9       &kp N0  &kp DELETE
+&none    &none     &none     &none     &none     &none     &kp C_PREV    &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT    &none   &none
+&none    &none     &none     &none     &none     &none     &kp C_NEXT    &none       &none       &none     &none        &none   &none
+&trans   &none     &none     &none     &trans    &kp SPACE &trans        &kp ENTER   &trans      &none     &none        &none
             >;
 
-            display-name = "Symbols";
             sensor-bindings = <&scroll_encoder>;
+            display-name = "Nav";
+        };
+
+        Sym {
+            bindings = <
+&none       &none       &none       &none       &none       &none       &trans  &none       &none       &none       &none       &none       &none
+&kp GRAVE   &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &trans  &kp CARET   &kp AMPS    &kp STAR    &kp LPAR    &kp RPAR    &kp BACKSPACE
+&kp TILDE   &kp UNDER   &kp MINUS   &none       &kp LBKT    &kp LBRC    &trans  &kp RBRC    &kp RBKT    &none       &kp EQUAL   &kp PLUS    &kp PIPE
+&none       &none       &none       &none       &none       &none       &trans  &none       &none       &none       &none       &none       &none
+&trans      &none       &none       &kp LGUI    &trans      &trans      &trans  &trans      &trans      &kp RGUI    &none       &none
+            >;
+
+            display-name = "Sym";
+        };
+
+        Fn {
+            bindings = <
+&none    &none        &none        &none        &none    &none    &trans  &none    &none    &none    &none    &none    &none
+&tog 4   &kp F1       &kp F2       &kp F3       &kp F4   &kp F5   &trans  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10  &bootloader
+&trans   &kp F11      &trans       &trans       &trans   &trans   &trans  &trans   &trans   &trans   &trans   &kp F12  &trans
+&trans   &bl BL_TOG   &bl BL_DEC   &bl BL_INC   &trans   &trans   &trans  &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &none        &none        &trans       &trans   &trans   &trans  &trans   &trans   &trans   &none    &none
+            >;
+
+            display-name = "Fn";
+        };
+
+        // Gaming: no tap-hold keys on the left half, plain Space, GUI disabled.
+        // Joystick down/right are Helldivers 2 stratagems, right home row is plain HJKL;
+        // the rest of the right half falls through to Base for chat.
+        Game {
+            bindings = <
+&none      &none    &none    &none    &none    &none    &none        &none    &none    &none    &none    &none     &none
+&kp ESC    &kp Q    &kp W    &kp E    &kp R    &kp T    &hd_rein     &trans   &trans   &trans   &trans   &trans    &trans
+&kp TAB    &kp A    &kp S    &kp D    &kp F    &kp G    &kp LALT     &kp H    &kp J    &kp K    &kp L    &kp SEMI  &trans
+&kp LSHFT  &kp Z    &kp X    &kp C    &kp V    &kp B    &hd_supp     &trans   &trans   &trans   &trans   &trans    &trans
+&trans     &none    &none    &kp LCTRL  &mo 5  &kp SPACE  &trans     &trans   &trans   &trans   &none    &none
+            >;
+
+            display-name = "Game";
+        };
+
+        // Held from Game: numbers and F-keys near WASD. Top-left leaves gaming mode.
+        GameNum {
+            bindings = <
+&none    &none    &none    &none    &none    &none      &kp N6   &none    &none    &none    &none    &none    &none
+&tog 4   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5     &trans   &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &kp F6   &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &kp N7   &kp N8   &kp N9   &kp N0   &kp GRAVE  &trans   &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &none    &none    &trans   &trans   &trans     &trans   &trans   &trans   &trans   &none    &none
+            >;
+
+            display-name = "GameNum";
         };
 
         Mouse {
             bindings = <
-&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans          &trans          &trans        &trans           &trans  &trans
+&none   &none   &none           &none           &none            &none     &trans  &none           &none           &none         &none            &none   &none
 &trans  &trans  &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans    &trans  &trans          &trans          &trans        &trans           &trans  &trans
 &trans  &trans  &msc SCRL_LEFT  &msc SCRL_UP    &msc SCRL_RIGHT  &trans    &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
 &trans  &trans  &trans          &msc SCRL_DOWN  &trans           &trans    &trans  &trans          &trans          &trans        &trans           &trans  &trans
-&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans          &trans          &trans        &trans           &trans
+&trans  &none   &none           &trans          &trans           &trans    &trans  &trans          &trans          &trans        &none            &none
             >;
 
             sensor-bindings = <&scroll_encoder>;
-            label = "Meta";
+            display-name = "Mouse";
         };
 
         System {
             bindings = <
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4    &trans  &rgb_ug RGB_TOG  &trans           &trans           &trans           &trans           &rgb_ug RGB_COLOR_HSB(0,0,100)
-&trans  &trans        &trans        &trans        &trans          &trans          &trans  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_EFF  &rgb_ug RGB_COLOR_HSB(19,100,33)
-&trans  &out OUT_USB  &out OUT_BLE  &out OUT_TOG  &trans          &trans          &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_SAD  &rgb_ug RGB_SPD  &rgb_ug RGB_EFR  &trans
-&trans  &trans        &trans        &trans        &trans          &trans          &trans  &trans           &trans           &trans           &trans           &trans           &trans
-&trans  &trans        &trans        &trans        &bt BT_CLR_ALL  &bt BT_CLR      &trans  &trans           &trans           &trans           &trans           &trans
+&none         &none         &none         &none         &none           &none         &trans  &none            &none            &none            &none            &none            &none
+&bootloader   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &trans  &rgb_ug RGB_TOG  &trans           &trans           &trans           &trans           &rgb_ug RGB_COLOR_HSB(0,0,100)
+&trans        &out OUT_USB  &out OUT_BLE  &out OUT_TOG  &trans          &trans        &trans  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_EFF  &rgb_ug RGB_COLOR_HSB(19,100,33)
+&trans        &trans        &trans        &trans        &trans          &trans        &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_EFR  &trans
+&trans        &none         &none         &trans        &bt BT_CLR_ALL  &bt BT_CLR    &trans  &trans           &trans           &trans           &none            &none
             >;
+
+            display-name = "System";
         };
     };
 };
